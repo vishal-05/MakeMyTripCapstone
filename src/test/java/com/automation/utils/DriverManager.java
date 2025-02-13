@@ -3,6 +3,7 @@ package com.automation.utils;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.time.Duration;
@@ -13,7 +14,11 @@ public class DriverManager {
 
     public static void createDriver(){
         if(System.getProperty("platform").equals("web")){
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--disable-blink-features=AutomationControlled");
+            options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+            options.setExperimentalOption("useAutomationExtension", false);
+            driver = new ChromeDriver(options);
             driver.manage().window().maximize();
         } else if (System.getProperty("platform").equals("mobile")) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -21,13 +26,13 @@ public class DriverManager {
             capabilities.setCapability("automationName", ConfigReader.getConfigValue("automation.name"));
             capabilities.setCapability("app", System.getProperty("user.dir") + ConfigReader.getConfigValue("app.path"));
             capabilities.setCapability("deviceName", ConfigReader.getConfigValue("device.name"));
-            capabilities.setCapability("appPackage", ConfigReader.getConfigValue("app.package"));
-            capabilities.setCapability("appActivity", ConfigReader.getConfigValue("app.activity"));
+//            capabilities.setCapability("appPackage", ConfigReader.getConfigValue("app.package"));
+//            capabilities.setCapability("appActivity", ConfigReader.getConfigValue("app.activity"));
             driver = new AndroidDriver(capabilities);
         }else {
             throw new RuntimeException("'platform' parameter value can be web or mobile");
         }
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     public static WebDriver getDriver(){
