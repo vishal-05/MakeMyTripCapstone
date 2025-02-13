@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class homeSteps {
+public class HomeStep {
     HomePage homePage = new HomePage();
 
     @Given("user open application")
