@@ -1,18 +1,12 @@
-package com.automation.pages;
+package com.automation.pages.web;
+
+import com.automation.pages.ui.HomePage;
 
 import com.automation.utils.ConfigReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class WebHomePage extends WebBasePage implements HomePage {
-    @FindBy(xpath = "//li[@data-cy='personalLogin']")
-    WebElement loginPageElement;
-
-    @FindBy(xpath = "//input[@placeholder='Enter Email Address']")
-    WebElement emailIdInput;
-
-    @FindBy(xpath = "//input[@data-cy='userName']")
-    WebElement phoneNumberInput;
 
     @FindBy(xpath = "//img[@data-cy='signInByMailButton']")
     WebElement signInbymailId;
@@ -27,11 +21,6 @@ public class WebHomePage extends WebBasePage implements HomePage {
     @FindBy(xpath = "//button[@data-cy='login']")
     WebElement loginBtn;
 
-    @FindBy(xpath = "//li[@class='makeFlex hrtlCenter font10 makeRelative lhUser userLoggedOut']/div/p")
-    WebElement signupbtn;
-
-    @FindBy(xpath = "//span[@class='commonModal__close']")
-    WebElement closeBtn;
 
     @FindBy(xpath = "//a[@class='mmtLogo makeFlex']")
     WebElement websiteLogo;
@@ -45,7 +34,23 @@ public class WebHomePage extends WebBasePage implements HomePage {
     @FindBy(xpath = "//li[contains(text(), 'Logout')]")
     WebElement logoutOption;
 
-    public void openApplication() {
-        driver.get(ConfigReader.getConfigValue("application.url"));
+    public boolean verifyHomePageISDisplayed() {
+        System.out.println("home page");
+        return websiteLogo.isDisplayed();
+    }
+
+    public boolean isProfileNameDisplayed() {
+        pause(5000);
+//        offerBannerClose.click();
+        System.out.println(profileData.getText());
+        return profileData.isDisplayed();
+    }
+    public void viewProfileData(){
+        profileData.click();
+        myProfileOption.click();
+    }
+    public void clickLogoutOption(){
+        logoutOption.click();
+        System.out.println("logged out");
     }
 }
