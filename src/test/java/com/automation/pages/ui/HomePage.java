@@ -2,5 +2,12 @@ package com.automation.pages.ui;
 
 public interface HomePage {
 
-    void openApplication();
+
+    boolean isProfileNameDisplayed();
+
+    boolean verifyHomePageISDisplayed();
+
+    void viewProfileData();
+
+    void clickLogoutOption();
 }
