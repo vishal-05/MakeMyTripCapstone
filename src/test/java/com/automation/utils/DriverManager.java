@@ -26,8 +26,8 @@ public class DriverManager {
             capabilities.setCapability("automationName", ConfigReader.getConfigValue("automation.name"));
             capabilities.setCapability("app", System.getProperty("user.dir") + ConfigReader.getConfigValue("app.path"));
             capabilities.setCapability("deviceName", ConfigReader.getConfigValue("device.name"));
-//            capabilities.setCapability("appPackage", ConfigReader.getConfigValue("app.package"));
-//            capabilities.setCapability("appActivity", ConfigReader.getConfigValue("app.activity"));
+         //   capabilities.setCapability("appPackage", ConfigReader.getConfigValue("app.package"));
+         //   capabilities.setCapability("appActivity", ConfigReader.getConfigValue("app.activity"));
             driver = new AndroidDriver(capabilities);
         }else {
             throw new RuntimeException("'platform' parameter value can be web or mobile");
