@@ -25,31 +25,38 @@ public class AndroidHomePage extends AndroidBasePage implements HomePage {
 
     @FindBy(xpath = "(//android.widget.TextView[@text=\"Log Out\"])[2]")
     WebElement confirmLogOut;
+    @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_deny_button\"]")
+    WebElement doNotAllow;
 
 
 
     public boolean isProfileNameDisplayed() {
+        if (!isPresent(profileName)) {
+            driver.navigate().back();
+            System.out.println("clicked back");
+        }
         pause(3000);
         hamburgerBtn.click();
+        System.out.println("clicked menu");
         pause(3000);
         return isPresent(profileName);
-
     }
 
-
     public boolean verifyHomePageISDisplayed() {
+        if(!isPresent(homeTab)){
+            doNotAllow.click();
+            System.out.println("clicked do not allow on home page");
+        }
         return homeTab.isDisplayed();
     }
 
     public void viewProfileData() {
         myAccBtn.click();
-
     }
 
     public void clickLogoutOption() {
         System.out.println("inside scroll");
         scrollPage();
-
         logoutBtn.click();
         confirmLogOut.click();
         pause(3000);

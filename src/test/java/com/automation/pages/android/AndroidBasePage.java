@@ -25,7 +25,6 @@ public class AndroidBasePage {
     public void pause(long milliSec) {
         try {
             Thread.sleep(milliSec);
-            System.out.println("waited");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -39,7 +38,6 @@ public class AndroidBasePage {
         Sequence sequence = new Sequence(finger1, 1)
                 .addAction(finger1.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), width / 2, height / 2))
                 .addAction(finger1.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
-//                .addAction(new Pause(finger1, Duration.ofSeconds(2)))
                 .addAction(finger1.createPointerMove(Duration.ofSeconds(2), PointerInput.Origin.viewport(), width / 2, 0))
                 .addAction(finger1.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 

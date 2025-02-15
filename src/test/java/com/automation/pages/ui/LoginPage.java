@@ -9,7 +9,7 @@ public interface LoginPage {
 
     boolean verifyLoginPageDisplayed();
 
-    void enterPhoneNumber();
+    void enterPhoneNumber(String phone);
 
     void clickLogin();
 

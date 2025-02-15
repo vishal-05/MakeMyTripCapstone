@@ -22,9 +22,9 @@ public class LoginStep extends BaseStep{
         Assert.assertTrue(loginPage.verifyLoginPageDisplayed());
     }
 
-    @When("user enters phone number and OTP")
-    public void user_enters_phoneNumber_and_OTP() {
-        loginPage.enterPhoneNumber();
+    @When("user enters {string} and OTP")
+    public void user_enters_and_OTP(String phone) {
+        loginPage.enterPhoneNumber(phone);
         loginPage.clickLogin();
     }
 }

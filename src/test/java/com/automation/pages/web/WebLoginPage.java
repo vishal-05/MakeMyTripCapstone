@@ -37,11 +37,13 @@ public class WebLoginPage extends WebBasePage implements LoginPage {
     public boolean verifyLoginPageDisplayed() {
         return loginPageElement.isDisplayed();
     }
+
     public void clickClose() {
         closeBtn.click();
     }
-    public void enterPhoneNumber() {
-        phoneNumberInput.sendKeys("9886984547");
+
+    public void enterPhoneNumber(String phone) {
+        phoneNumberInput.sendKeys(ConfigReader.getConfigValue(phone));
         continueBtn.click();
     }
 }

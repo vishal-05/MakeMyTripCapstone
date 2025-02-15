@@ -14,7 +14,6 @@ public class Hooks {
 
     @After
     public void cleanUp() {
-
         //DriverManager.getDriver().quit();
     }
 }
