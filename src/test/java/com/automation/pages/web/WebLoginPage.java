@@ -11,6 +11,7 @@ public class WebLoginPage extends WebBasePage implements LoginPage {
 
     @FindBy(xpath = "//span[@class='commonModal__close']")
     WebElement closeBtn;
+
     @FindBy(xpath = "//li[@data-cy='personalLogin']")
     WebElement loginPageElement;
 
@@ -39,7 +40,7 @@ public class WebLoginPage extends WebBasePage implements LoginPage {
     }
 
     public void clickClose() {
-        closeBtn.click();
+
     }
 
     public void enterPhoneNumber(String phone) {

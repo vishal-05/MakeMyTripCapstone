@@ -5,7 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Set;
 
 public class WebBasePage {
     public WebDriver driver;
@@ -24,4 +28,35 @@ public class WebBasePage {
             throw new RuntimeException(e);
         }
     }
+
+    public String getFormattedDate(String expectedFormat, String date, String currentDateFormat) {
+        try {
+            SimpleDateFormat currentFormatter = new SimpleDateFormat(currentDateFormat);
+            Date dateObject = currentFormatter.parse(date);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dateObject);
+
+            SimpleDateFormat expectedFormatter = new SimpleDateFormat(expectedFormat);
+            return expectedFormatter.format(calendar.getTime());
+        } catch (Exception e) {
+            throw new RuntimeException("Invalid date format " + expectedFormat);
+        }
+    }
+
+    public void switchToNewTab() {
+        String currentWindowHandle = driver.getWindowHandle();
+
+        // Wait for the new tab to open
+        Set<String> allWindowHandles = driver.getWindowHandles();
+
+        // Switch to the new tab (it will be the one that's not the current one)
+        for (String handle : allWindowHandles) {
+            if (!handle.equals(currentWindowHandle)) {
+                driver.switchTo().window(handle);
+                break;
+            }
+        }
+    }
+
 }

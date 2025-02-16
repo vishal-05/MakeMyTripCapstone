@@ -9,7 +9,6 @@ public class LoginStep extends BaseStep{
     @Given("user open application")
     public void user_open_application() {
         loginPage.openApplication();
-        loginPage.clickClose();
     }
 //    @When("user clicks on loginBtn")
 //    public void user_clicks_on_loginBtn(){

@@ -14,6 +14,7 @@ public class HomeStep extends BaseStep {
 
     @Then("verify user is on home page")
     public void verify_user_is_on_home_page() {
+
         Assert.assertTrue(homePage.verifyHomePageISDisplayed());
     }
 
