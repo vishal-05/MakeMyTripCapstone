@@ -19,8 +19,40 @@ public class FlightStep extends BaseStep{
         flightPage.enterFlightDate(ConfigReader.getConfigValue(departureDate));
     }
 
-    @And("user click on search button")
-    public void userClickOnSearchButton() {
+    @And("user clicks on search button")
+    public void userClicksOnSearchButton() {
         flightPage.clickOnSearchBtn();
+    }
+
+    @Then("verify user is on flight listing page")
+    public void verifyUserIsOnFlightListingPage() {
+        Assert.assertTrue(flightPage.isUserIsOnFlightListingPage());
+    }
+
+    @When("user clicks on first flight")
+    public void userClicksOnFirstFlight() {
+        flightPage.userClickOnFirstFlight();
+    }
+
+    @And("user clicks Book Now in the Saver category")
+    public void userClicksBookNowInTheSaverCategory() {
+        flightPage.userClicksOnBookNowBtn();
+    }
+
+    @And("print the price and user clicks on continue")
+    public void printThePriceAndUserClicksOnContinue() {
+        flightPage.printPriceAndClicksContinue();
+    }
+
+    @And("user enters the traveller details {string}, {string} and {string}")
+    public void userEntersTheTravellerDetailsAnd(String gender, String firstName, String lastName) {
+        flightPage.userEntersTravellerDetails(ConfigReader.getConfigValue(gender),
+                ConfigReader.getConfigValue(firstName),
+                ConfigReader.getConfigValue(lastName));
+    }
+
+    @And("print the finalized flight details")
+    public void printTheFinalizedFlightDetails() {
+        flightPage.printConfirmedFlightDetails();
     }
 }

@@ -9,4 +9,16 @@ public interface FlightPage {
     void enterFlightDate(String departureDate);
 
     void clickOnSearchBtn();
+
+    boolean isUserIsOnFlightListingPage();
+
+    void userClickOnFirstFlight();
+
+    void userClicksOnBookNowBtn();
+
+    void printPriceAndClicksContinue();
+
+    void userEntersTravellerDetails(String gender, String firstName, String lastName );
+
+    void printConfirmedFlightDetails();
 }
