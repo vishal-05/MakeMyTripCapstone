@@ -10,4 +10,6 @@ public interface HomePage {
     void viewProfileData();
 
     void clickLogoutOption();
+
+    void clickOnFlights();
 }
