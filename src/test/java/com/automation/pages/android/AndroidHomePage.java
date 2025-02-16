@@ -26,7 +26,8 @@ public class AndroidHomePage extends AndroidBasePage implements HomePage {
     @FindBy(xpath = "(//android.widget.TextView[@text=\"Log Out\"])[2]")
     WebElement confirmLogOut;
 
-
+    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tvTitle\" and @text=\"Flights\"]")
+    WebElement flightsTab;
 
     public boolean isProfileNameDisplayed() {
         pause(3000);
@@ -53,5 +54,9 @@ public class AndroidHomePage extends AndroidBasePage implements HomePage {
         logoutBtn.click();
         confirmLogOut.click();
         pause(3000);
+    }
+
+    public void clickOnFlights(){
+        flightsTab.click();
     }
 }

@@ -1,6 +1,6 @@
 Feature: Validate login logout functionality
 
-  Scenario: validate user can login and logout
+  Scenario: verify user can login and logout
     Given user open application
     Then verify user is on login page
     When user enters phone number and OTP

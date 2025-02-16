@@ -53,4 +53,8 @@ public class WebHomePage extends WebBasePage implements HomePage {
         logoutOption.click();
         System.out.println("logged out");
     }
+
+    public void clickOnFlights(){
+
+    }
 }
