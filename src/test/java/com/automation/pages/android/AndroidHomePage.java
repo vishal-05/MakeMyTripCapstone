@@ -28,7 +28,8 @@ public class AndroidHomePage extends AndroidBasePage implements HomePage {
     @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_deny_button\"]")
     WebElement doNotAllow;
 
-
+    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tvTitle\" and @text=\"Flights\"]")
+    WebElement flightsTab;
 
     public boolean isProfileNameDisplayed() {
         if (!isPresent(profileName)) {
@@ -60,5 +61,9 @@ public class AndroidHomePage extends AndroidBasePage implements HomePage {
         logoutBtn.click();
         confirmLogOut.click();
         pause(3000);
+    }
+
+    public void clickOnFlights(){
+        flightsTab.click();
     }
 }
