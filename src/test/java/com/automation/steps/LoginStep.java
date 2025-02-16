@@ -22,8 +22,8 @@ public class LoginStep extends BaseStep{
         Assert.assertTrue(loginPage.verifyLoginPageDisplayed());
     }
 
-    @When("user enters {string} and OTP")
-    public void user_enters_and_OTP(String phone) {
+    @When("user enters phone number {string} and OTP")
+    public void user_enters_phone_number_and_OTP(String phone) {
         loginPage.enterPhoneNumber(phone);
         loginPage.clickLogin();
     }

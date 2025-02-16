@@ -19,4 +19,26 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
     public void clickOnSearchBtn(){
 
     }
+
+    public boolean isUserIsOnFlightListingPage(){
+        return true;
+    }
+    public void userClickOnFirstFlight(){
+
+    }
+    public void userClicksOnBookNowBtn(){
+
+    }
+
+    public void printPriceAndClicksContinue(){
+
+    }
+
+    public void userEntersTravellerDetails(String gender, String firstName, String lastname){
+
+    }
+
+    public void printConfirmedFlightDetails(){
+
+    }
 }

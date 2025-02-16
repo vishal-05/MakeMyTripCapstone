@@ -32,8 +32,8 @@ public class HomeStep extends BaseStep {
         Assert.assertTrue(!homePage.isProfileNameDisplayed());
     }
 
-    @When("user click on flights")
-    public void userClickOnFlights() {
+    @When("user clicks on flights")
+    public void userClicksOnFlights() {
         homePage.clickOnFlights();
     }
 }
