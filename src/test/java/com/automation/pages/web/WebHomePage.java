@@ -8,8 +8,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class WebHomePage extends WebBasePage implements HomePage {
 
-    @FindBy(xpath = "//img[@data-cy='signInByMailButton']")
-    WebElement signInbymailId;
+    @FindBy(xpath = "//span[@data-testid='cstmModal-close']")
+    WebElement closeBtn;
 
     @FindBy(xpath = "//p[@data-cy='loggedInUser']")
     WebElement profileData;
@@ -34,7 +34,11 @@ public class WebHomePage extends WebBasePage implements HomePage {
     @FindBy(xpath = "//li[contains(text(), 'Logout')]")
     WebElement logoutOption;
 
+    @FindBy(xpath = "//li[@data-cy='menu_Flights']")
+    WebElement flightsTab;
+
     public boolean verifyHomePageISDisplayed() {
+        closeBtn.click();
         System.out.println("home page");
         return websiteLogo.isDisplayed();
     }
@@ -55,6 +59,7 @@ public class WebHomePage extends WebBasePage implements HomePage {
     }
 
     public void clickOnFlights(){
+        flightsTab.click();
 
     }
 }
