@@ -12,4 +12,6 @@ public interface HomePage {
     void clickLogoutOption();
 
     void clickOnFlights();
+
+    void clicksOnHotels();
 }
