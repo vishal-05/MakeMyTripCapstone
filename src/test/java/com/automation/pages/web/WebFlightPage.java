@@ -2,6 +2,7 @@ package com.automation.pages.web;
 
 import com.automation.pages.ui.FlightPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -34,7 +35,8 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
     @FindBy(xpath = "//p[@data-cy='submit']/a")
     WebElement searchBtn;
 
-    @FindBy(xpath = "//div[@class='fareLockInfoContainer']/button")
+    //    @FindBy(xpath = "//div[@class='fareLockInfoContainer']/button")
+    @FindBy(xpath = "//span[contains(text(), 'GOT IT')]")
     WebElement fareLockButtonAd;
 
     @FindBy(xpath = "//div[@class='listingCard  appendBottom5']")
@@ -58,7 +60,7 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
     @FindBy(xpath = "//input[@placeholder='Last Name']")
     WebElement lastNameInput;
 
-    @FindBy(xpath = "(//div[@class='insRadioSection appendBottom8 '])[2]")
+    @FindBy(xpath = "(//div[@class='insRadioSection appendBottom8 '])[2]//span")
     WebElement noInsurance;
 
     @FindBy(xpath = "//div[@class='flightItenaryHdr']//p")
@@ -67,11 +69,11 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
     @FindBy(xpath = "//span[@data-test='component-time']")
     List<WebElement> timingInTicket;
 
-    @FindBy(xpath = "//div[@class=\"adultList \"]")
+    @FindBy(xpath = "//div[@class='adultList ']/label")
     WebElement adult1;
 
-    @FindBy(xpath = "//div[@class='adultItem']/div[@class='selectTab ']")
-    WebElement genderElement;
+//    @FindBy(xpath = "//div[@class='adultItem']/div[@class='selectTab ']//label")
+//    WebElement genderElement;
 
     public boolean isUserIsOnFlightPage() {
         return flightTabActive.isDisplayed();
@@ -106,9 +108,8 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
         }
         String dateValue = getFormattedDate("dd", departureDate, "dd/MM/yyyy");
         System.out.println(dateValue);
-        WebElement dateElement = driver.findElement(By.xpath("//div[@class='dateInnerCell']/p[contains(text(), '" + dateValue + "')]"));
+        WebElement dateElement = driver.findElement(By.xpath("//div[contains(@aria-label, '" + dateValue + "')]/div[@class='dateInnerCell']/p[contains(text(), '" + dateValue + "')][1]"));
         dateElement.click();
-
     }
 
     public void clickOnSearchBtn() {
@@ -117,10 +118,7 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
 
     public boolean isUserIsOnFlightListingPage() {
         pause(5000);
-//        if (fareLockButtonAd.isDisplayed()) {
-//            fareLockButtonAd.click();
-//        }
-
+        fareLockButtonAd.click();
         return !flightList.isEmpty();
     }
 
@@ -137,7 +135,6 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
     public void printPriceAndClicksContinue() {
         switchToNewTab();
         System.out.println(totalFare.getText());
-
     }
 
     public void userEntersTravellerDetails(String gender, String firstName, String lastname) {
@@ -148,21 +145,21 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
         firstNameInput.sendKeys(firstName);
         lastNameInput.sendKeys(lastname);
         pause(5000);
-//        WebElement genderElement = driver.findElement(By.xpath(String.format("//label/span[contains(text(), '%s')]", gender)));
-        genderElement.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElement genderElement = driver.findElement(By.xpath(String.format("//label/span[contains(text(), '%s')]", gender)));
+        js.executeScript("arguments[0].click();", genderElement);
         pause(5000);
-        pause(2000);
+        js.executeScript("arguments[0].click();", noInsurance);
         noInsurance.click();
         System.out.println("clicked insurance");
         pause(5000);
     }
 
     public void printConfirmedFlightDetails() {
-        pause(2000);
         System.out.println("******************Flight Booking Details******************");
         System.out.println(titleOfTicket.getText());
-        System.out.println("Departure time" + timingInTicket.getFirst().getText());
-        System.out.println("Arrival time" + timingInTicket.getFirst().getText());
+        System.out.println("Departure time" + timingInTicket.get(0).getText());
+        System.out.println("Arrival time" + timingInTicket.get(1).getText());
         System.out.println("Final Price: " + totalFare.getText());
     }
 

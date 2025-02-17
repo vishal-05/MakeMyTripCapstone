@@ -1,3 +1,5 @@
+
+@web
 Feature: Validate user can book a hotel
 
   Background:

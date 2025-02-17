@@ -37,6 +37,9 @@ public class WebHomePage extends WebBasePage implements HomePage {
     @FindBy(xpath = "//li[@data-cy='menu_Flights']")
     WebElement flightsTab;
 
+    @FindBy(xpath = "//li[@data-cy='menu_Hotels']")
+    WebElement hotelsTab;
+
     public boolean verifyHomePageISDisplayed() {
         closeBtn.click();
         System.out.println("home page");
@@ -49,21 +52,22 @@ public class WebHomePage extends WebBasePage implements HomePage {
         System.out.println(profileData.getText());
         return profileData.isDisplayed();
     }
-    public void viewProfileData(){
+
+    public void viewProfileData() {
         profileData.click();
         myProfileOption.click();
     }
-    public void clickLogoutOption(){
+
+    public void clickLogoutOption() {
         logoutOption.click();
         System.out.println("logged out");
     }
 
-    public void clickOnFlights(){
+    public void clickOnFlights() {
         flightsTab.click();
-
     }
 
-    public void clicksOnHotels(){
-
+    public void clicksOnHotels() {
+        hotelsTab.click();
     }
 }
