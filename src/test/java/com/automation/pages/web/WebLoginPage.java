@@ -18,17 +18,16 @@ public class WebLoginPage extends WebBasePage implements LoginPage {
     @FindBy(xpath = "//input[@data-cy='userName']")
     WebElement phoneNumberInput;
 
-
     @FindBy(xpath = "//button/span[contains(text(), 'Continue')]")
     WebElement continueBtn;
-    @FindBy(xpath = "//input[@id='password']")
-    WebElement passwordInput;
+
     @FindBy(xpath = "//button[@data-cy='login']")
     WebElement loginBtn;
 
     public void clickLogin() {
         pause(20000);
         loginBtn.click();
+        pause(5000);
     }
 
     public void openApplication() {
