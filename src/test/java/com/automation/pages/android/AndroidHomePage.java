@@ -34,6 +34,12 @@ public class AndroidHomePage extends AndroidBasePage implements HomePage {
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tvTitle\" and @text=\"Hotels\"]")
     WebElement hotelsTab;
 
+    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tvTitle\" and @text=\"Trains/ Bus\"]")
+    WebElement trainsAndBusesTab;
+
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Book Bus Tickets\"]")
+    WebElement busTab;
+
     public boolean isProfileNameDisplayed() {
         if (!isPresent(profileName)) {
             driver.navigate().back();
@@ -72,5 +78,10 @@ public class AndroidHomePage extends AndroidBasePage implements HomePage {
 
     public void clicksOnHotels(){
         hotelsTab.click();
+    }
+
+    public void clicksOnBuses(){
+        trainsAndBusesTab.click();
+        busTab.click();
     }
 }

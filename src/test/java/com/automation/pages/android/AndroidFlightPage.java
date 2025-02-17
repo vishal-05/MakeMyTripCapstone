@@ -180,7 +180,7 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
     }
 
     public void printConfirmedFlightDetails(){
-        System.out.println("******************Flight Booking Details******************");
+        System.out.println("****************** Flight Booking Details ******************");
         System.out.println(titleOfTicket.getText());
         System.out.println(timingInTicket.getText());
         System.out.println("Final Price: "+finalPriceInTicket.getText());
