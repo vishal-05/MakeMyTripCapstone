@@ -70,9 +70,6 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
     @FindBy(xpath = "//android.view.ViewGroup[@resource-id=\"com.makemytrip:id/clBottomSticky\"]")
     WebElement confirmBtn1;
 
-    @FindBy(xpath = "//android.widget.CheckBox[@resource-id=\"com.makemytrip:id/confirmationCheckBox\"]")
-    WebElement checkBox;
-
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/snack_bar_footer_left\"]")
     WebElement unSecureBtn;
 
@@ -121,8 +118,6 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
         while (!expMonth.contains(actMonth.trim())) {
             System.out.print(actMonth);
             System.out.print(expMonth);
-            WebElement elementForScroll = driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.makemytrip:id/rvCalendarMonth\"]/android.view.View[1]"));
-            //scrollWithWebElement(elementForScroll);
             scrollPage();
             pause(1000);
             actMonth = monthName.getText();
@@ -189,5 +184,6 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
         System.out.println(titleOfTicket.getText());
         System.out.println(timingInTicket.getText());
         System.out.println("Final Price: "+finalPriceInTicket.getText());
+        System.out.println("**********************************************************");
     }
 }

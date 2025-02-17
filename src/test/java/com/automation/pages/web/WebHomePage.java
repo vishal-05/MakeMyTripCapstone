@@ -62,4 +62,8 @@ public class WebHomePage extends WebBasePage implements HomePage {
         flightsTab.click();
 
     }
+
+    public void clicksOnHotels(){
+
+    }
 }
