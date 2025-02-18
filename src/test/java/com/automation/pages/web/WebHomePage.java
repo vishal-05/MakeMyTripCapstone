@@ -2,7 +2,6 @@ package com.automation.pages.web;
 
 import com.automation.pages.ui.HomePage;
 
-import com.automation.utils.ConfigReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -13,14 +12,6 @@ public class WebHomePage extends WebBasePage implements HomePage {
 
     @FindBy(xpath = "//p[@data-cy='loggedInUser']")
     WebElement profileData;
-
-    @FindBy(xpath = "//button/span[contains(text(), 'Continue')]")
-    WebElement continueBtn;
-    @FindBy(xpath = "//input[@id='password']")
-    WebElement passwordInput;
-    @FindBy(xpath = "//button[@data-cy='login']")
-    WebElement loginBtn;
-
 
     @FindBy(xpath = "//a[@class='mmtLogo makeFlex']")
     WebElement websiteLogo;
@@ -40,6 +31,9 @@ public class WebHomePage extends WebBasePage implements HomePage {
     @FindBy(xpath = "//li[@data-cy='menu_Hotels']")
     WebElement hotelsTab;
 
+    @FindBy(xpath = "//li[@data-cy='menu_Buses']")
+    WebElement busesTab;
+
     public boolean verifyHomePageISDisplayed() {
         closeBtn.click();
         System.out.println("home page");
@@ -49,8 +43,7 @@ public class WebHomePage extends WebBasePage implements HomePage {
     public boolean isProfileNameDisplayed() {
         pause(5000);
 //        offerBannerClose.click();
-        System.out.println(profileData.getText());
-        return profileData.isDisplayed();
+        return isPresent(profileData);
     }
 
     public void viewProfileData() {
@@ -71,7 +64,7 @@ public class WebHomePage extends WebBasePage implements HomePage {
         hotelsTab.click();
     }
 
-    public void clicksOnBuses(){
-
+    public void clicksOnBuses() {
+        busesTab.click();
     }
 }

@@ -30,7 +30,7 @@ public class HomeStep extends BaseStep {
 
     @Then("verify user is logged out")
     public void verify_user_is_logged_out() {
-        Assert.assertTrue(!homePage.isProfileNameDisplayed());
+        Assert.assertFalse(homePage.isProfileNameDisplayed());
     }
 
     @When("user clicks on flights")
