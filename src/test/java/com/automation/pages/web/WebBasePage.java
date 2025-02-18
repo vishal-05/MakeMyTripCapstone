@@ -2,6 +2,7 @@ package com.automation.pages.web;
 
 import com.automation.utils.DriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,11 +15,22 @@ import java.util.Set;
 public class WebBasePage {
     public WebDriver driver;
     WebDriverWait wait;
+
     public WebBasePage() {
         driver = DriverManager.getDriver();
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     }
+
+    public boolean isPresent(WebElement element) {
+        try {
+            pause(3000);
+            return element.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
     public void pause(long milliSec) {
         try {
