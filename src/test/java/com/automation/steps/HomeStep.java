@@ -47,4 +47,10 @@ public class HomeStep extends BaseStep {
     public void userClicksOnBuses() {
         homePage.clicksOnBuses();
     }
+
+    @When("user clicks on airport cabs")
+    public void user_clicks_on_airport_cabs() {
+        homePage.clickOnAirportCabs();
+    }
+
 }
