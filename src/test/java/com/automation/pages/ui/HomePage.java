@@ -16,4 +16,6 @@ public interface HomePage {
     void clicksOnHotels();
 
     void clicksOnBuses();
+
+    default void clickOnAirportCabs(){}
 }

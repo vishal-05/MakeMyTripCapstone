@@ -11,6 +11,7 @@ public class BaseStep {
     FlightPage flightPage;
     HotelPage hotelPage;
     BusPage busPage;
+    CabPage cabPage;
     public BaseStep() {
         if (System.getProperty("platform").equals("web")) {
              homePage = new WebHomePage();
@@ -24,6 +25,7 @@ public class BaseStep {
             flightPage = new AndroidFlightPage();
             hotelPage = new AndroidHotelPage();
             busPage = new AndroidBusPage();
+            cabPage = new AndroidCabPage();
         }
     }
 }
