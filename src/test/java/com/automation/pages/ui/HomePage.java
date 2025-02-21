@@ -18,4 +18,8 @@ public interface HomePage {
     void clicksOnBuses();
 
     default void clickOnAirportCabs(){}
+
+    default void clicksOnCurrency(){
+
+    }
 }

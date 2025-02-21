@@ -22,4 +22,28 @@ public interface BusPage {
     boolean isReviewBookingIsVisible();
 
     void printConfirmedBusDetails();
+
+    default void selectTheBusName(String busName){
+
+    }
+
+    default void PrintNameBusesDisplayed(){
+
+    }
+
+    default boolean isSpecifiedBusNameIsDisplayed(String busName){
+        return false;
+    }
+
+    default void selectBusFiltersAcNonAcSeaterSleeper(String acNonAc, String seaterSleeper){
+
+   }
+
+    default void printBusNameAndTypeDisplayed(){
+
+    }
+
+    default boolean isBusFilterAcNonAcSeaterSleeperDisplayed(String acNonAc, String seaterSleeper){
+        return false;
+    }
 }
