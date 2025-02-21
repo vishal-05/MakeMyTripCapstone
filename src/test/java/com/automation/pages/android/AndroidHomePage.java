@@ -1,8 +1,6 @@
 package com.automation.pages.android;
 
 import com.automation.pages.ui.HomePage;
-import com.automation.pages.web.WebBasePage;
-import com.automation.pages.web.WebHomePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -69,14 +67,17 @@ public class AndroidHomePage extends AndroidBasePage implements HomePage {
     }
 
     public void clickLogoutOption() {
+        pause(3000);
         System.out.println("inside scroll");
-        scrollPage();
+        scrollPageForFlightPage();
+        System.out.println("scrolled");
         logoutBtn.click();
         confirmLogOut.click();
         pause(3000);
     }
 
     public void clickOnFlights(){
+        pause(5000);
         flightsTab.click();
     }
 

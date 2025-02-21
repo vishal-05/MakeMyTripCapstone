@@ -4,12 +4,8 @@ import com.automation.pages.ui.FlightPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.beans.Visibility;
 import java.util.List;
-import java.util.Locale;
 
 public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
 
@@ -23,7 +19,7 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
     WebElement fromCityInput;
 
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_to_et\"]")
-    WebElement  toCityBtn;
+    WebElement toCityBtn;
 
     @FindBy(xpath = "//android.widget.EditText[@resource-id=\"com.makemytrip:id/arrival_city_input\"]")
     WebElement toCityInput;
@@ -61,20 +57,28 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
     @FindBy(xpath = "//android.widget.TextView[@text=\"+ ADD NEW ADULT\"]")
     WebElement addNewAdultBtn;
 
-    @FindBy(xpath = "//android.widget.EditText[@resource-id=\"com.makemytrip:id/et_passport_number\" and @text=\"First & Middle Name\"]")
-    WebElement firstNameEle;
 
-    @FindBy(xpath = "//android.widget.EditText[@resource-id=\"com.makemytrip:id/et_passport_number\" and @text=\"Last Name\"]")
-    WebElement lastNameEle;
+//    @FindBy(xpath = "//android.widget.EditText[@resource-id=\"com.makemytrip:id/et_passport_number\" and @text=\"First & Middle Name\"]")
+//    WebElement firstNameEle;
+//
+//    @FindBy(xpath = "//android.widget.EditText[@resource-id=\"com.makemytrip:id/et_passport_number\" and @text=\"Last Name\"]")
+//    WebElement lastNameEle;
 
-    @FindBy(xpath = "//android.view.ViewGroup[@resource-id=\"com.makemytrip:id/clBottomSticky\"]")
+    @FindBy(xpath = "//android.widget.LinearLayout[@resource-id=\"com.makemytrip:id/selection_layout\"]")
     WebElement confirmBtn1;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/snack_bar_footer_left\"]")
+
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/confirm_button']")
+    WebElement adultConfirmBtn;
+
+    @FindBy(xpath = "//android.widget.TextView[@text=\"Travel Unsecured\"]")
     WebElement unSecureBtn;
 
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/right_cta\"]")
     WebElement confirmBtn2;
+
+    @FindBy(xpath = "//android.widget.TextView[@text=\"Confirm & continue\"]")
+    WebElement confirmContinueBtn;
 
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/snack_bar_footer_right\"]")
     WebElement yesPleaseBtn;
@@ -91,9 +95,20 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
     @FindBy(xpath = "//android.widget.TextView[@text=\"Total Due\"]/../android.widget.TextView[2]")
     WebElement finalPriceInTicket;
 
+    @FindBy(xpath = "//android.widget.ImageView[@resource-id='com.makemytrip:id/filter_sort_icon']")
+    WebElement filterBtn;
+
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/apply_button']")
+    WebElement applyBtn;
+
+    @FindBy(xpath = "(//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.makemytrip:id/recycler_view\"])[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout")
+    WebElement addFilter;
+
+    @FindBy(xpath = "//android.widget.LinearLayout[@content-desc='Sort by']")
+    WebElement sortByTab;
 
 
-    public boolean isUserIsOnFlightPage(){
+    public boolean isUserIsOnFlightPage() {
         return flightSearchText.getText().equals("Flight");
     }
 
@@ -109,7 +124,7 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
         toCityElement.click();
     }
 
-    public void enterFlightDate(String departureDate){
+    public void enterFlightDate(String departureDate) {
         departureDateText.click();
 
         String expMonth = getFormattedDate("MMMM", departureDate, "dd/MM/yyyy");
@@ -118,10 +133,11 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
         while (!expMonth.contains(actMonth.trim())) {
             System.out.print(actMonth);
             System.out.print(expMonth);
-            scrollPage();
-            pause(1000);
+            WebElement monthEle = driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.makemytrip:id/rvCalendarMonth\"]/android.view.View[1]"));
+            scrollWithWebElement(monthEle);
+            pause(500);
             actMonth = monthName.getText();
-            if(expMonth.equals(actMonth)){
+            if (expMonth.equals(actMonth)) {
                 break;
             }
         }
@@ -138,52 +154,155 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
         doneBtn.click();
     }
 
-    public void clickOnSearchBtn(){
+    public void clickOnSearchBtn() {
         searchBtn.click();
     }
 
-    public boolean isUserIsOnFlightListingPage(){
+    public boolean isUserIsOnFlightListingPage() {
         dismissBtn.click();
         return !flightList.isEmpty();
     }
 
-    public void userClickOnFirstFlight(){
+    public void userClickOnFirstFlight() {
         flightList.getFirst().click();
     }
 
-    public void userClicksOnBookNowBtn(){
+    public void userClicksOnBookNowBtn() {
         bookNowBtn.click();
     }
 
-    public void printPriceAndClicksContinue(){
-        System.out.println("Flight Ticket price: "+ticketPrice.getText());
+    public void printPriceAndClicksContinue() {
+        System.out.println("Flight Ticket price: " + ticketPrice.getText());
         continueBtn1.click();
-        wait.until(ExpectedConditions.visibilityOf(continueBtn2));
+        pause(5000);
+//        wait.until(ExpectedConditions.visibilityOf(continueBtn2));
         continueBtn2.click();
     }
 
-    public void userEntersTravellerDetails(String gender, String firstName, String lastname){
+    public void userEntersTravellerDetails(String gender, String firstName, String lastname) {
+        pause(3000);
         addNewAdultBtn.click();
-        WebElement genderEle = driver.findElement(By.xpath(String.format("//android.widget.TextView[@text=\"%s\"]",gender)));
+        WebElement genderEle = driver.findElement(By.xpath(String.format("//android.widget.TextView[@text=\"%s\"]", gender)));
         genderEle.click();
+        WebElement firstNameEle = driver.findElement(By.xpath("//android.widget.EditText[@resource-id=\"com.makemytrip:id/et_passport_number\" and @text=\"First & Middle Name\"]"));
         firstNameEle.sendKeys(firstName);
+        System.out.println("clicked first name");
+        WebElement lastNameEle = driver.findElement(By.xpath("//android.widget.EditText[@resource-id=\"com.makemytrip:id/et_passport_number\" and @text=\"Last Name\"]"));
         lastNameEle.sendKeys(lastname);
-        confirmBtn1.click();
+        System.out.println("clicked last name");
+        adultConfirmBtn.click();
         continueBtn2.click();
         unSecureBtn.click();
-        confirmBtn2.click();
         yesPleaseBtn.click();
-        System.out.println("Flight ticket price after selecting seat: "+ticketPriceAfterSeat.getText());
+        continueBtn2.click();
+        System.out.println("Flight ticket price after selecting seat: " + ticketPriceAfterSeat.getText());
         continueBtn2.click();
         continueBtn2.click();
-        continueBtn2.click();
+        confirmContinueBtn.click();
+        pause(3000);
     }
 
-    public void printConfirmedFlightDetails(){
+    public void printConfirmedFlightDetails() {
         System.out.println("****************** Flight Booking Details ******************");
         System.out.println(titleOfTicket.getText());
         System.out.println(timingInTicket.getText());
-        System.out.println("Final Price: "+finalPriceInTicket.getText());
+        System.out.println("Final Price: " + finalPriceInTicket.getText());
         System.out.println("**********************************************************");
+    }
+
+    public void selectFilterOption(String filterOption) {
+        filterBtn.click();
+        scrollPageForFlightPage();
+        WebElement flightName = driver.findElement(By.xpath("(//android.widget.TextView[@text='" + filterOption + "'])[1]"));
+        flightName.click();
+        applyBtn.click();
+        pause(3000);
+    }
+
+    public boolean isFlightListingDisplayedWithFilter(String filterValue) {
+
+        String prevFlightTime = "";
+
+        while (true) {
+            List<WebElement> flightTitle = driver.findElements(By.xpath("(//android.widget.TextView[@resource-id=\"com.makemytrip:id/airline_name\"])"));
+            List<WebElement> flightTime = driver.findElements(By.xpath("//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_dep_time\"]"));
+            List<WebElement> flightPrice = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.makemytrip:id/tv_final_fare']"));
+
+            // Check if we have flight information
+            if (flightTime.isEmpty() || flightPrice.isEmpty()) {
+                break;  // Exit if no flights are found
+            }
+
+            String currentFlightTime = flightTime.getFirst().getText();
+
+            if (currentFlightTime.equals(prevFlightTime)) {
+                break;
+            }
+
+            for (int i = 0; i < flightTitle.size(); i++) {
+                System.out.println("Flight Name: " + flightTitle.get(i).getText());
+                System.out.println("Flight departure time: " + flightTime.get(i).getText());
+                System.out.println("Flight Price: " + flightPrice.get(i).getText());
+                currentFlightTime = flightTime.get(i).getText();
+            }
+            scrollPageForFlightPage();
+            prevFlightTime = currentFlightTime;
+
+        }
+        System.out.println("scrolled");
+        return true;
+    }
+
+    public void selectSortOption(String sortOption) {
+        filterBtn.click();
+        sortByTab.click();
+        WebElement sortType = driver.findElement(By.xpath("//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_heading\" and @text='" + sortOption + "']"));
+        sortType.click();
+        applyBtn.click();
+    }
+
+    public boolean isFlightListingDisplayedWithSort(String configValue) {
+        boolean filterApplied = false;
+        String prevFlightTime = "";
+        int prevFlightPrice = 0;  // Initialize as an integer
+
+        while (true) {
+            List<WebElement> flightTitle = driver.findElements(By.xpath("(//android.widget.TextView[@resource-id=\"com.makemytrip:id/airline_name\"])"));
+            List<WebElement> flightTime = driver.findElements(By.xpath("//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_dep_time\"]"));
+            List<WebElement> flightPrice = driver.findElements(By.xpath("//android.widget.TextView[@resource-id='com.makemytrip:id/tv_final_fare']"));
+
+            // Check if we have flight information
+            if (flightTime.isEmpty() || flightPrice.isEmpty()) {
+                break;  // Exit if no flights are found
+            }
+
+            String currentFlightTime = flightTime.getFirst().getText();
+            String currentFlightPriceText = flightPrice.getFirst().getText();
+
+            // Remove non-numeric characters and convert the price to an integer
+            int currentFlightPrice = Integer.parseInt(currentFlightPriceText.replaceAll("[^0-9]", ""));
+
+            // Compare the current flight price with the previous price
+            if (currentFlightTime.equals(prevFlightTime) && currentFlightPrice == prevFlightPrice) {
+                filterApplied = true;
+                break;  // Exit the loop if the price hasn't changed and time matches
+            }
+
+            // Loop through flight details if you want to print them
+            for (int i = 0; i < flightTime.size(); i++) {
+                System.out.println("Flight Name: " + flightTitle.get(i).getText());
+                System.out.println("Flight departure time: " + flightTime.get(i).getText());
+                System.out.println("Flight Price: " + flightPrice.get(i).getText());
+            }
+
+            // Scroll and continue checking
+            scrollPageForFlightPage();
+
+            // Update previous time and price
+            prevFlightTime = currentFlightTime;
+            prevFlightPrice = currentFlightPrice;  // Update the previous price for the next iteration
+        }
+
+        return filterApplied;
     }
 }

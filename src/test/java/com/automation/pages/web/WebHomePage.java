@@ -35,7 +35,6 @@ public class WebHomePage extends WebBasePage implements HomePage {
     WebElement busesTab;
 
     public boolean verifyHomePageISDisplayed() {
-        closeBtn.click();
         System.out.println("home page");
         return websiteLogo.isDisplayed();
     }

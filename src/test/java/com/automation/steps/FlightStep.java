@@ -4,6 +4,7 @@ import com.automation.utils.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.checkerframework.checker.units.qual.C;
 import org.junit.Assert;
 
 public class FlightStep extends BaseStep{
@@ -54,5 +55,27 @@ public class FlightStep extends BaseStep{
     @And("print the finalized flight details")
     public void printTheFinalizedFlightDetails() {
         flightPage.printConfirmedFlightDetails();
+    }
+
+
+    @When("user selects on filter option {string}")
+    public void userSelectFilterOption(String filterOption) {
+        flightPage.selectFilterOption(ConfigReader.getConfigValue(filterOption));
+    }
+
+    @Then("verify only {string} flights are displayed on the page")
+    public void verifyOnlyFlightsAreDisplayedOnThePage(String filterValue) {
+        Assert.assertTrue(flightPage.isFlightListingDisplayedWithFilter(ConfigReader.getConfigValue(filterValue)));
+    }
+
+    @When("user selects on sort option {string}")
+    public void userSelectsOnSortOption(String sortOption) {
+        flightPage.selectSortOption(ConfigReader.getConfigValue(sortOption));
+    }
+
+    @Then("verify flights are sorted by {string}")
+    public void verifyFlightsAreSortedBy(String sortValue) {
+        Assert.assertTrue(flightPage.isFlightListingDisplayedWithSort(ConfigReader.getConfigValue(sortValue)));
+
     }
 }
