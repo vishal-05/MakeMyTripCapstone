@@ -53,4 +53,9 @@ public class HomeStep extends BaseStep {
         homePage.clickOnAirportCabs();
     }
 
+
+    @When("user clicks on Forex Card & Currency")
+    public void userClicksOnForexCardCurrency() {
+        homePage.clicksOnCurrency();
+    }
 }

@@ -1,5 +1,3 @@
-
-
 Feature: Validate user can book a bus
 
   Background:

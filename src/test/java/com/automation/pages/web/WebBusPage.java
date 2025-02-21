@@ -68,6 +68,24 @@ public class WebBusPage extends WebBasePage implements BusPage {
     @FindBy(xpath = "//div[@class='makeFlex row blackText reviewBusInfoWrapper cardPadding spaceBetween']/div[3]")
     WebElement dropPointName;
 
+    @FindBy(xpath = "//li[@class='containerHorizontal'][6]//span[@class='sc-kjoXOD erIYpE']")
+    List<WebElement> listOfBusNames;
+
+    @FindBy(xpath = "//p[@class='makeFlex hrtlCenter appendBottom8 latoBold blackText appendRight15']")
+    List<WebElement> displayedBusNames;
+
+    @FindBy(id = "price")
+    List<WebElement> displayedBusPrice;
+
+    @FindBy(xpath = "//div[@class='busTypesFilterSection']//span[@class='secondaryTxt font14']")
+    List<WebElement> busAcNonAcSeaterSleeper;
+
+    @FindBy(xpath = "//p[@class='makeFlex hrtlCenter secondaryTxt nowrapStyle']")
+    List<WebElement> displayedBusType;
+
+    @FindBy(id = "toggle_buses")
+    WebElement toggleBus;
+
 
     public boolean isUserIsOnBusPage() {
         return busTabActive.isDisplayed();
@@ -104,7 +122,9 @@ public class WebBusPage extends WebBasePage implements BusPage {
         String dateValue = getFormattedDate("dd", departureDate, "dd/MM/yyyy");
         System.out.println(dateValue);
         WebElement dateElement = driver.findElement(By.xpath("//div[@class='DayPicker-Day' and contains(text(), '" + dateValue + "')]"));
-        dateElement.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", dateElement);
+       // dateElement.click();
     }
 
     public void clickSearchBusesBtn() {
@@ -154,5 +174,58 @@ public class WebBusPage extends WebBasePage implements BusPage {
         System.out.println("Drop point and Time: " + dropPointName.getText());
         System.out.println("Ticket Price: " + finalPrice.getText());
         System.out.println("**********************************************************");
+    }
+
+    public void selectTheBusName(String busName){
+        for(WebElement busNameElement : listOfBusNames){
+            if(busNameElement.getText().contains(busName)){
+                busNameElement.click();
+                pause(2000);
+                break;
+            }
+        }
+    }
+
+    public void PrintNameBusesDisplayed(){
+        for(int i=0;i<displayedBusNames.size();i++){
+            System.out.print(displayedBusNames.get(i).getText()+" ---> ");
+            System.out.println(displayedBusPrice.get(i).getText());
+        }
+    }
+
+    public boolean isSpecifiedBusNameIsDisplayed(String busName){
+        for(WebElement busNameElement : displayedBusNames){
+            if(!busNameElement.getText().contains(busName)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void selectBusFiltersAcNonAcSeaterSleeper(String acNonAc, String seaterSleeper){
+        for (WebElement filterElement : busAcNonAcSeaterSleeper){
+            if(filterElement.getText().equals(acNonAc) || filterElement.getText().contains(seaterSleeper)){
+                filterElement.click();
+            }
+        }
+        pause(2000);
+    }
+    public void printBusNameAndTypeDisplayed(){
+        if(isPresent(toggleBus)){
+            toggleBus.click();
+        }
+        for(int i=0;i<displayedBusNames.size();i++){
+            System.out.print(displayedBusNames.get(i).getText()+" ---> ");
+            System.out.println(displayedBusType.get(i).getText());
+        }
+    }
+
+    public boolean isBusFilterAcNonAcSeaterSleeperDisplayed(String acNonAc, String seaterSleeper){
+        for (WebElement filterElement : displayedBusType){
+            if(!filterElement.getText().contains(acNonAc) && !(filterElement.getText().contains(seaterSleeper) || filterElement.getText().contains("Semi Sleeper"))){
+                return false;
+            }
+        }
+        return true;
     }
 }
