@@ -2,8 +2,11 @@ package com.automation.pages.web;
 
 import com.automation.pages.ui.HomePage;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class WebHomePage extends WebBasePage implements HomePage {
 
@@ -22,7 +25,7 @@ public class WebHomePage extends WebBasePage implements HomePage {
     @FindBy(xpath = "//p[contains(text(), 'My Profile')]")
     WebElement myProfileOption;
 
-    @FindBy(xpath = "//li[contains(text(), 'Logout')]")
+    @FindBy(xpath = "//li[contains(text(),'Logout')]")
     WebElement logoutOption;
 
     @FindBy(xpath = "//li[@data-cy='menu_Flights']")
@@ -34,8 +37,15 @@ public class WebHomePage extends WebBasePage implements HomePage {
     @FindBy(xpath = "//li[@data-cy='menu_Buses']")
     WebElement busesTab;
 
+    @FindBy(xpath = "//span[@class='headerIconTextAlignment chNavText darkGreyText'][normalize-space()='Forex Card & Currency']")
+    WebElement currencyTab;
+
+    @FindBy(xpath = "//a[@id='listingPage_foreignCurrencyNotes_quickLoadBtn']")
+    WebElement buyCurrency;
+
+
     public boolean verifyHomePageISDisplayed() {
-        closeBtn.click();
+       // closeBtn.click();
         System.out.println("home page");
         return websiteLogo.isDisplayed();
     }
@@ -52,7 +62,9 @@ public class WebHomePage extends WebBasePage implements HomePage {
     }
 
     public void clickLogoutOption() {
-        logoutOption.click();
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", logoutOption);
         System.out.println("logged out");
     }
 
@@ -66,5 +78,10 @@ public class WebHomePage extends WebBasePage implements HomePage {
 
     public void clicksOnBuses() {
         busesTab.click();
+    }
+
+    public void clicksOnCurrency(){
+        currencyTab.click();
+        buyCurrency.click();
     }
 }

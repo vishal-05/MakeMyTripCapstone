@@ -55,4 +55,35 @@ public class BusStep extends BaseStep{
         Assert.assertTrue(busPage.isReviewBookingIsVisible());
         busPage.printConfirmedBusDetails();
     }
+
+    @When("user select the bus name {string}")
+    public void userSelectTheBusName(String busName) {
+        busPage.selectTheBusName(ConfigReader.getConfigValue(busName));
+    }
+
+    @And("user print the name of buses that are displayed")
+    public void userPrintNameBusesDisplayed() {
+        busPage.PrintNameBusesDisplayed();
+    }
+
+
+    @Then("verify that only buses matching the specified bus name {string} are displayed")
+    public void verifyThatOnlyBusesMatchingTheSpecifiedBusNameAreDisplayed(String busName) {
+        Assert.assertTrue(busPage.isSpecifiedBusNameIsDisplayed(ConfigReader.getConfigValue(busName)));
+    }
+
+    @When("user select the bus filters {string} and {string}")
+    public void userSelectTheBusFiltersAnd(String acNonAc, String seaterSleeper) {
+        busPage.selectBusFiltersAcNonAcSeaterSleeper(acNonAc, seaterSleeper);
+    }
+
+    @And("user print the name and type of buses that are displayed")
+    public void userPrintTheNameAndTypeOfBusesThatAreDisplayed() {
+        busPage.printBusNameAndTypeDisplayed();
+    }
+
+    @Then("verify that the buses matching the filters {string} and {string} are displayed")
+    public void verifyThatTheBusesMatchingTheFiltersAndAreDisplayed(String acNonAc, String seaterSleeper) {
+        Assert.assertTrue(busPage.isBusFilterAcNonAcSeaterSleeperDisplayed(acNonAc, seaterSleeper));
+    }
 }

@@ -142,6 +142,7 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
         pause(5000);
         adult1.click();
         System.out.println("click adult");
+        firstNameInput.clear();
         firstNameInput.sendKeys(firstName);
         lastNameInput.sendKeys(lastname);
         pause(5000);
