@@ -21,4 +21,16 @@ public interface FlightPage {
     void userEntersTravellerDetails(String gender, String firstName, String lastName );
 
     void printConfirmedFlightDetails();
+
+    default void selectFilterOption(String filterOption){};
+
+    default boolean isFlightListingDisplayedWithFilter(String filterValue) {
+        return false;
+    }
+
+    default void selectSortOption(String configValue){};
+
+    default boolean isFlightListingDisplayedWithSort(String configValue){
+        return false;
+    }
 }

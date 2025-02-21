@@ -164,4 +164,6 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
         System.out.println("Final Price: " + totalFare.getText());
     }
 
+
+
 }

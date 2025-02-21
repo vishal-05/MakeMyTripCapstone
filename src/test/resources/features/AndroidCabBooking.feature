@@ -1,5 +1,4 @@
 
-@web
 Feature: Validate user can book a cab
 
   Background:

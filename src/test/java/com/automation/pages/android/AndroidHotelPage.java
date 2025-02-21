@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id='title']")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"title\" and @text=\"Hotels & Homestays\"]")
     WebElement hotelSearchText;
 
     @FindBy(xpath = "//android.view.View[@resource-id='location_box']")
@@ -40,10 +40,10 @@ public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"search_cta\"]")
     WebElement searchBtn;
 
-    @FindBy(xpath = "(//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.makemytrip:id/imageRecyclerView\"])/android.widget.ImageView")
-    List<WebElement> hotelList;
+    @FindBy(xpath = "//android.view.View[@resource-id=\"mediaCard\"]")
+    List<WebElement> hotelImage;
 
-    @FindBy(xpath = "//android.view.ViewGroup[@resource-id=\"com.makemytrip:id/listing_htl_details\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"tvHotelName\"]")
     WebElement firstHotelTab;
 
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"tvRoomPrice\"]")
@@ -71,7 +71,7 @@ public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
     WebElement totalAmt;
 
     public boolean isUserIsOnHotelPage(){
-        return hotelSearchText.getText().contains("Hotels");
+        return hotelSearchText.isDisplayed();
     }
 
     public void enterHotelBookingDetails(String location, String checkInDate, String checkOutDate){
@@ -126,7 +126,7 @@ public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
     }
 
     public boolean isUserIsOnHotelListingPage(){
-        return !hotelList.isEmpty();
+        return !hotelImage.isEmpty();
     }
 
     public void clickOnFirstHotel(){

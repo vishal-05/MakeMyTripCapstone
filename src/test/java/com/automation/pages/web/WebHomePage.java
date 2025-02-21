@@ -45,7 +45,7 @@ public class WebHomePage extends WebBasePage implements HomePage {
 
 
     public boolean verifyHomePageISDisplayed() {
-       // closeBtn.click();
+        closeBtn.click();
         System.out.println("home page");
         return websiteLogo.isDisplayed();
     }

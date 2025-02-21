@@ -44,7 +44,7 @@ public class AndroidLoginPage extends AndroidBasePage implements LoginPage {
 
     public void openApplication() {
         skipBtn.click();
-        noneAbove.click();
+//        noneAbove.click();
         driver.navigate().back();
         System.out.println("clicked back");
         doNotAllow.click();
