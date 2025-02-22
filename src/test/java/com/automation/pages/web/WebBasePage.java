@@ -19,12 +19,12 @@ public class WebBasePage {
     public WebBasePage() {
         driver = DriverManager.getDriver();
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     public boolean isPresent(WebElement element) {
         try {
-            pause(3000);
+            pause(1000);
             return element.isDisplayed();
         } catch (Exception e) {
             return false;

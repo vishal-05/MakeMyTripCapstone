@@ -43,6 +43,9 @@ public class WebHomePage extends WebBasePage implements HomePage {
     @FindBy(xpath = "//a[@id='listingPage_foreignCurrencyNotes_quickLoadBtn']")
     WebElement buyCurrency;
 
+    @FindBy(xpath = "//li[@data-cy='menu_TravelInsurance']")
+    WebElement travelInsuranceTab;
+
 
     public boolean verifyHomePageISDisplayed() {
         closeBtn.click();
@@ -83,5 +86,10 @@ public class WebHomePage extends WebBasePage implements HomePage {
     public void clicksOnCurrency(){
         currencyTab.click();
         buyCurrency.click();
+    }
+
+    public void clicksOnTravelInsurance(){
+        pause(2000);
+        travelInsuranceTab.click();
     }
 }

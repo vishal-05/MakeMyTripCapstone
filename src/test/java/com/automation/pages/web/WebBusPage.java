@@ -86,6 +86,8 @@ public class WebBusPage extends WebBasePage implements BusPage {
     @FindBy(id = "toggle_buses")
     WebElement toggleBus;
 
+    @FindBy(xpath = "//p[@class='sc-fAjcbJ jzbkvc']")
+    WebElement noBusesFound;
 
     public boolean isUserIsOnBusPage() {
         return busTabActive.isDisplayed();
@@ -211,12 +213,17 @@ public class WebBusPage extends WebBasePage implements BusPage {
         pause(2000);
     }
     public void printBusNameAndTypeDisplayed(){
-        if(isPresent(toggleBus)){
-            toggleBus.click();
+        if(isPresent(noBusesFound)){
+            System.out.println("No Buses Found");
         }
-        for(int i=0;i<displayedBusNames.size();i++){
-            System.out.print(displayedBusNames.get(i).getText()+" ---> ");
-            System.out.println(displayedBusType.get(i).getText());
+        else {
+            if (isPresent(toggleBus)) {
+                toggleBus.click();
+            }
+            for (int i = 0; i < displayedBusNames.size(); i++) {
+                System.out.print(displayedBusNames.get(i).getText() + " ---> ");
+                System.out.println(displayedBusType.get(i).getText());
+            }
         }
     }
 
