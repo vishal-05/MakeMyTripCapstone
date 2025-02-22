@@ -25,7 +25,7 @@ public class WebLoginPage extends WebBasePage implements LoginPage {
     WebElement loginBtn;
 
     public void clickLogin() {
-        pause(20000);
+        pause(15000);
         loginBtn.click();
         pause(5000);
     }
