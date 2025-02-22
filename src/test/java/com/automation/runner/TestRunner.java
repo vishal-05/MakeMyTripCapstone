@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber.json",
                 "html:target/cucumber.html"
         },
-        tags = "@web"
+        tags = "@api"
 )
 public class TestRunner {
 

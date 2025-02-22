@@ -98,6 +98,7 @@ public class WebHotelPage extends WebBasePage implements HotelPage {
     }
 
     public void clickOnFirstHotel() {
+        pause(2000);
         hotelTitles.getFirst().click();
         System.out.println("Clicked Hotel");
     }
