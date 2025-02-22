@@ -22,4 +22,8 @@ public interface HomePage {
     default void clicksOnCurrency(){
 
     }
+
+    default void clicksOnTravelInsurance(){
+
+    }
 }
