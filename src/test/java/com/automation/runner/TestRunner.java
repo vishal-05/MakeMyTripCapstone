@@ -10,10 +10,11 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com.automation.steps",
         plugin = {"pretty",
-                "json:target/cucumber.json",
-                "html:target/cucumber.html"
+                "json:test-output/cucumber.json",
+                "html:test-output/cucumber.html",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
-        tags = "@api"
+        tags = "@web"
 )
 public class TestRunner {
 

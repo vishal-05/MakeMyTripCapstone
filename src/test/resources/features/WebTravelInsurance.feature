@@ -3,8 +3,8 @@ Feature: Validate user can view the insurance plan
 
   Background:
     Given user open application
-   # Then verify user is on login page
-  #  When user enters phone number "phone.number" and OTP
+    Then verify user is on login page
+    When user enters phone number "phone.number" and OTP
     Then verify user is on home page
 
   Scenario: verify user can view the insurance plan

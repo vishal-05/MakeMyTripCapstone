@@ -2,8 +2,8 @@ Feature: Validate user can filter bus details functionality
 
   Background:
     Given user open application
-    #Then verify user is on login page
-   #When user enters phone number "phone.number" and OTP
+    Then verify user is on login page
+    When user enters phone number "phone.number" and OTP
     Then verify user is on home page
     When user clicks on Buses
     Then verify user is on bus search page
@@ -22,8 +22,8 @@ Feature: Validate user can filter bus details functionality
     Then verify that the buses matching the filters "<ACOrNonAC>" and "<SeaterOrSleeper>" are displayed
 
     Examples:
-      |  ACOrNonAC  | SeaterOrSleeper |
-      |     AC      |     Sleeper     |
-      |    Non AC   |     Sleeper     |
-      |     AC      |     Seater      |
-      |    Non AC   |     Seater      |
+      | ACOrNonAC | SeaterOrSleeper |
+      | AC        | Sleeper         |
+      | Non AC    | Sleeper         |
+      | AC        | Seater          |
+      | Non AC    | Seater          |

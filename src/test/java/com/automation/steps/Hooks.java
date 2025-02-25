@@ -2,15 +2,18 @@ package com.automation.steps;
 
 import com.automation.utils.ConfigReader;
 import com.automation.utils.DriverManager;
+import com.automation.utils.ExtentReportManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.restassured.RestAssured;
 
 public class Hooks {
 
     @Before("@web or @android")
-    public void setUpForWebOrAndroid() {
+    public void setUpForWebOrAndroid(Scenario scenario) {
         ConfigReader.initConfig();
+        ExtentReportManager.initReporter(scenario);
         DriverManager.createDriver();
     }
 
@@ -19,11 +22,15 @@ public class Hooks {
         ConfigReader.initConfig();
         RestAssured.baseURI = ConfigReader.getConfigValue("api.url");
         RestAssured.useRelaxedHTTPSValidation();
-
     }
 
     @After
-    public void cleanUp() {
-       // DriverManager.getDriver().quit();
+    public void cleanUp(Scenario scenario) {
+        try {
+            scenario.attach(DriverManager.takeScreenShotAsBytes(), "image/png", scenario.getName());
+        } catch (Exception e) {
+            System.out.println("Failed to capture screenshot: " + e.getMessage());
+        }
+        DriverManager.getDriver().quit();
     }
 }

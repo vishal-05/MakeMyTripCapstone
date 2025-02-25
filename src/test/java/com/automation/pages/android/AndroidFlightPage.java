@@ -30,6 +30,9 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_month\"]")
     WebElement monthName;
 
+        @FindBy(xpath = "(//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_year\"])[1]")
+            WebElement yearName;
+
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/btnDone\"]")
     WebElement doneBtn;
 
@@ -153,6 +156,62 @@ public class AndroidFlightPage extends AndroidBasePage implements FlightPage {
 
         doneBtn.click();
     }
+//    public void enterFlightDate(String departureDate) {
+//        departureDateText.click();
+//
+//        String expMonth = getFormattedDate("MMMM", departureDate, "dd/MM/yyyy");
+//        String expYear = getFormattedDate("yyyy", departureDate, "dd/MM/yyyy");
+//
+//        pause(4000);
+//        // Reinitialize elements to get the updated values
+//        String actMonth = monthName.getText();
+//        String actYear = yearName.getText();
+//        System.out.println("1" + actMonth);
+//        System.out.println("2" + expMonth);
+//
+//        int i = 0;
+//        while (true) {
+//            // Reinitialize elements on each iteration
+//            actMonth = driver.findElement(By.xpath("//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_month\"]")).getText();
+//            actYear = driver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_year\"])[1]")).getText();
+//
+//
+//            System.out.print(actMonth);
+//            System.out.println(actYear);
+//            System.out.print(expYear);
+//            System.out.println(expMonth);
+//
+//            if((expMonth.equals(actMonth)) && (expYear.equals(actYear))) {
+//                break;
+//            }
+//
+//            WebElement monthEle = driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.makemytrip:id/rvCalendarMonth\"]/android.view.View[1]"));
+//            WebElement monthEle2 = driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.makemytrip:id/rvCalendarMonth\"]/android.widget.LinearLayout[1]"));
+//
+//            int startX = monthEle.getLocation().getX() + monthEle.getSize().getWidth() / 2;  // Horizontal center of monthEle
+//            int startY = monthEle.getLocation().getY() + monthEle.getSize().getHeight();     // StartY is the height of monthEle
+//
+//            // Get the location of monthEle2
+//            int endX = monthEle2.getLocation().getX();  // X coordinate of monthEle2
+//            int endY = monthEle2.getLocation().getY();  // Y coordinate of monthEle2
+//
+//            scroll(startX, startY, endX, endY);
+//            pause(500); // Optional pause to ensure the UI has updated
+//        }
+//
+//        String XPATH_DATE_VALUE = "//f[@content-desc=\"%s 2025 Tap to select\"]";
+//
+//        String dateValue = getFormattedDate("dd MMM", departureDate, "dd/MM/yyyy");
+//        String datePart = dateValue.substring(0, 2); // Extracts "14"
+//        String monthPart = dateValue.substring(3);   // Extracts "Apr"
+//        monthPart = monthPart.toUpperCase();   // Converts "Apr" to "APR"
+//        dateValue = datePart + " " + monthPart;
+//
+//        WebElement dateElement = driver.findElement(By.xpath(String.format(XPATH_DATE_VALUE, dateValue)));
+//        dateElement.click();
+//
+//        doneBtn.click();
+//    }
 
     public void clickOnSearchBtn() {
         searchBtn.click();
