@@ -1,11 +1,15 @@
 package com.automation.utils;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class RestAssuredManager {
@@ -21,14 +25,6 @@ public class RestAssuredManager {
     public static void setHeader(String key, String value){
         requestSpecification.header(key,value);
     }
-
-//    public static void setBody(String filePath){
-//        try {
-//            requestSpecification.body(getDataFromJsonFile(filePath));
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     public static void setBody(Object pojo){
         try {
@@ -61,33 +57,42 @@ public class RestAssuredManager {
         response.then().log().all();
     }
 
-
     public static int getStatusCode(){
         return response.getStatusCode();
     }
 
     public static String getDataFromJsonFile(String fileName) throws FileNotFoundException {
-        String jsonFolderPath = "src/test/resources/data/";
+        String jsonFolderPath = "src/test/resources/jsonData/";
         Scanner sc = new Scanner(new FileInputStream(jsonFolderPath + fileName));
-        String body = sc.useDelimiter("\\Z").next();
-        return body;
+        return sc.useDelimiter("\\Z").next();
     }
 
-//    public static Response getResponse() {
-//        return response;
-//    }
+    public static String getFieldDataFromJsonFile(String fileName, String fieldName) throws IOException {
+        String jsonFolderPath = "src/test/resources/jsonData/";
+        File file = new File(jsonFolderPath + fileName);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(file);
+        System.out.println(jsonNode.get(fieldName).asText());
+        return jsonNode.get(fieldName).asText();
+
+    }
 
     public static String getResponseFieldValue(String jsonPath){
         return response.jsonPath().getString(jsonPath);
     }
 
-//    public static boolean isFieldAvailable(String jsonPath) {
-//        try{
-//            String value = RestAssuredManager.getResponseFieldValue(jsonPath);
-//            return value!=null && !value.isEmpty();
-//        } catch (Exception e) {
-//            return false;
-//        }
-//    }
+    public static boolean isFieldAvailable(String fieldName) {
+        try{
+            String value = RestAssuredManager.getResponseFieldValue(fieldName);
+            System.out.println(value);
+            return value!=null && !value.isEmpty();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static void clear() {
+        requestSpecification = RestAssured.given();
+    }
 }
 

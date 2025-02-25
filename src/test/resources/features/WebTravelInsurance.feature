@@ -1,3 +1,4 @@
+@web
 Feature: Validate user can view the insurance plan
 
   Background:
