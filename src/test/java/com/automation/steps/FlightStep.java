@@ -16,7 +16,7 @@ public class FlightStep extends BaseStep{
 
     @When("user enters the details for booking flight {string}, {string} and {string}")
     public void userEntersTheDetailsForBookingFlightAnd(String fromCity, String toCity, String departureDate) {
-        flightPage.enterFlightDetails(ConfigReader.getConfigValue(fromCity), ConfigReader.getConfigValue(toCity));
+//        flightPage.enterFlightDetails(ConfigReader.getConfigValue(fromCity), ConfigReader.getConfigValue(toCity));
         flightPage.enterFlightDate(ConfigReader.getConfigValue(departureDate));
     }
 

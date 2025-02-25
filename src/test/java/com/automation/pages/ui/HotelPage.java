@@ -15,4 +15,18 @@ public interface HotelPage {
     void printPriceAndSelectRoom();
 
     void printConfirmedHotelDetails();
+
+    default boolean verifyUserisOnHotelDetailsPage(){
+        return false;
+    }
+
+    default void clickOnImage(){}
+
+    default boolean verifyImageIsZoomed(){return false;}
+
+    default void zoomImage(){}
+
+    default void zoomoutImage(){}
+
+    default void navigateToHotelDetailsPage(){}
 }

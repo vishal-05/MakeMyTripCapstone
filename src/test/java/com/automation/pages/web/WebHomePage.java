@@ -19,7 +19,7 @@ public class WebHomePage extends WebBasePage implements HomePage {
     @FindBy(xpath = "//a[@class='mmtLogo makeFlex']")
     WebElement websiteLogo;
 
-    @FindBy(xpath = "//span[@class='cstmModal__close']")
+    @FindBy(xpath = "//span[@class='commonModal__close']")
     WebElement offerBannerClose;
 
     @FindBy(xpath = "//p[contains(text(), 'My Profile')]")
@@ -69,6 +69,7 @@ public class WebHomePage extends WebBasePage implements HomePage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", logoutOption);
         System.out.println("logged out");
+        offerBannerClose.click();
     }
 
     public void clickOnFlights() {

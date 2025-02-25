@@ -1,6 +1,9 @@
 package com.automation.steps;
 
 import com.automation.utils.ConfigReader;
+import com.automation.utils.DriverManager;
+import com.automation.utils.ExtentReportManager;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -43,5 +46,25 @@ public class HotelStep extends BaseStep {
     @And("print the finalized hotel details")
     public void printTheFinalizedHotelDetails() {
         hotelPage.printConfirmedHotelDetails();
+    }
+
+    @Then("verify user is on hotel details page")
+    public void verifyUserIsOnHotelDetailsPage() {
+        hotelPage.verifyUserisOnHotelDetailsPage();
+    }
+
+    @When("user clicks on a hotel image to view and zooms")
+    public void userClicksOnAHotelImageToViewAndZooms() {
+        hotelPage.clickOnImage();
+        hotelPage.zoomImage();
+        ExtentReportManager.attachScreenshot();
+    }
+
+    @And("user zoom out and navigate back to hotels details page")
+    public void userZoomOutAndNavigateBackToHotelsDetailsPage() {
+        hotelPage.zoomoutImage();
+        ExtentReportManager.attachScreenshot();
+        hotelPage.navigateToHotelDetailsPage();
+
     }
 }

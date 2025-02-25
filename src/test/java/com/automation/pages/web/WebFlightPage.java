@@ -92,24 +92,38 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
 
     public void enterFlightDate(String departureDate) {
         String expMonth = getFormattedDate("MMMM", departureDate, "dd/MM/yyyy");
+        String expYear = getFormattedDate("yyyy", departureDate, "dd/MM/yyyy");
+
         pause(4000);
-        String actMonth = monthName.getText();
-        String firstWord = actMonth.split(" ")[0];
-        while (!expMonth.contains(firstWord.trim())) {
-            System.out.print(firstWord);
-            System.out.print(expMonth);
+        String actMonthYear = monthName.getText();
+        String[] monthYearParts = actMonthYear.split(" ");
+        String actMonth = monthYearParts[0];  // Extract month
+        String actYear = monthYearParts[1];   // Extract year
+
+        // Compare both month and year
+        while (!(expMonth.equals(actMonth) && expYear.equals(actYear))) {
+            System.out.println("Current month: " + actMonth + " " + actYear);
+            System.out.println("Expected month: " + expMonth + " " + expYear);
+
+            // Click next button to navigate to the next month
             nextMonthBtn.click();
             pause(1000);
-            actMonth = monthName.getText();
-            firstWord = actMonth.split(" ")[0];
-            if (expMonth.equals(firstWord)) {
-                break;
-            }
+
+            // Update the current month and year
+            actMonthYear = monthName.getText();
+            monthYearParts = actMonthYear.split(" ");
+            actMonth = monthYearParts[0];
+            actYear = monthYearParts[1];
         }
+
+        // Extract the day (date) from the departureDate parameter
         String dateValue = getFormattedDate("dd", departureDate, "dd/MM/yyyy");
-        System.out.println(dateValue);
+        System.out.println("Selecting date: " + dateValue);
+
+        // Select the date on the calendar
         WebElement dateElement = driver.findElement(By.xpath("//div[contains(@aria-label, '" + dateValue + "')]/div[@class='dateInnerCell']/p[contains(text(), '" + dateValue + "')][1]"));
         dateElement.click();
+
     }
 
     public void clickOnSearchBtn() {

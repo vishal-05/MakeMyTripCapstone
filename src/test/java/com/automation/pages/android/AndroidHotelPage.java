@@ -46,6 +46,9 @@ public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"tvHotelName\"]")
     WebElement firstHotelTab;
 
+        @FindBy(xpath = "//android.widget.TextView[@resource-id=\"tv_title\"]")
+            WebElement hotelName;
+
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"tvRoomPrice\"]")
     WebElement roomPricePerNight;
 
@@ -70,14 +73,23 @@ public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"tv_amount\"]")
     WebElement totalAmt;
 
-    public boolean isUserIsOnHotelPage(){
+        @FindBy(xpath = "(//android.view.View[@resource-id=\"image_grid_item\"])[1]")
+            WebElement hotelImageEle;
+
+            @FindBy(xpath = "//android.view.View[@resource-id=\"gallery_item_12\"]")
+                WebElement firstHotelImg;
+
+                @FindBy(xpath = "(//android.view.View[@resource-id=\"media_grid_list_item_0\"])[1]")
+                    WebElement firstHotelImg1;
+
+    public boolean isUserIsOnHotelPage() {
         return hotelSearchText.isDisplayed();
     }
 
-    public void enterHotelBookingDetails(String location, String checkInDate, String checkOutDate){
+    public void enterHotelBookingDetails(String location, String checkInDate, String checkOutDate) {
         locationBox.click();
         searchText.sendKeys(location);
-        List<WebElement> searchLocation = driver.findElements(By.xpath(String.format("//android.widget.TextView[contains(@text,'%s')][1]",location)));
+        List<WebElement> searchLocation = driver.findElements(By.xpath(String.format("//android.widget.TextView[contains(@text,'%s')][1]", location)));
         searchLocation.getFirst().click();
 
         String expMonth = getFormattedDate("MMMM", checkInDate, "dd/MM/yyyy");
@@ -89,7 +101,7 @@ public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
             scrollPage();
             pause(1000);
             actMonth = monthName.getText();
-            if(expMonth.equals(actMonth)){
+            if (expMonth.equals(actMonth)) {
                 break;
             }
         }
@@ -121,34 +133,65 @@ public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
 
     }
 
-    public void clickOnHotelSearchBtn(){
+    public void clickOnHotelSearchBtn() {
         searchBtn.click();
     }
 
-    public boolean isUserIsOnHotelListingPage(){
+    public boolean isUserIsOnHotelListingPage() {
         return !hotelImage.isEmpty();
     }
 
-    public void clickOnFirstHotel(){
+    public void clickOnFirstHotel() {
         firstHotelTab.click();
     }
 
-    public void printPriceAndSelectRoom(){
-        System.out.println("Room price per night: "+roomPricePerNight.getText());
+    public void printPriceAndSelectRoom() {
+        System.out.println("Room price per night: " + roomPricePerNight.getText());
         selectRoomTab.click();
         wait.until(ExpectedConditions.visibilityOf(selectRoomTab));
         selectRoomTab.click();
     }
 
-    public void printConfirmedHotelDetails(){
+    public void printConfirmedHotelDetails() {
         System.out.println("****************** Hotel Booking Details ******************");
-        System.out.println("Hotel Name: "+hotelNameText.getText());
-        System.out.println("Check In Date And Time: "+checkInDateText.getText()+" ---> "+checkInTimeText.getText());
-        System.out.println("Check Out Date And Time: "+checkOutDateText.getText()+" ---> "+checkOutTimeText.getText());
-        System.out.println("Total Amount Incl Of Taxes & Fees: "+totalAmt.getText());
+        System.out.println("Hotel Name: " + hotelNameText.getText());
+        System.out.println("Check In Date And Time: " + checkInDateText.getText() + " ---> " + checkInTimeText.getText());
+        System.out.println("Check Out Date And Time: " + checkOutDateText.getText() + " ---> " + checkOutTimeText.getText());
+        System.out.println("Total Amount Incl Of Taxes & Fees: " + totalAmt.getText());
         System.out.println("***********************************************************");
+    }
+
+    public boolean verifyUserisOnHotelDetailsPage() {
+        return hotelName.isDisplayed();
+    }
+
+    public void clickOnImage() {
+        hotelImageEle.click();
+        if(isPresent(firstHotelImg)){
+            firstHotelImg.click();
+        } else {
+            firstHotelImg1.click();
+        }
+        System.out.println("image displayed");
+    }
 
 
+
+
+    public void zoomImage(){
+        zoom();
+        System.out.println("zoomed in");
+        pause(2000);
+    }
+
+    public void zoomoutImage(){
+        zoomOut();
+        System.out.println("zoomed out");
+    }
+
+    public void navigateToHotelDetailsPage(){
+        driver.navigate().back();
+        driver.navigate().back();
     }
 
 }

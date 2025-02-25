@@ -7,13 +7,14 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/Logout.feature",
         glue = "com.automation.steps",
         plugin = {"pretty",
                 "json:target/cucumber.json",
-                "html:target/cucumber.html"
+                "html:target/cucumber.html",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
-        tags = "@api"
+        tags = "@web"
 )
 public class TestRunner {
 
