@@ -1,4 +1,4 @@
-@web
+
 Feature: Validate login and logout functionality
 
   Background:

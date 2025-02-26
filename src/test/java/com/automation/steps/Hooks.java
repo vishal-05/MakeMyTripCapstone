@@ -26,12 +26,14 @@ public class Hooks {
 
     @After
     public void cleanUp(Scenario scenario) {
-        try {
-            scenario.attach(DriverManager.takeScreenShotAsBytes(), "image/png", scenario.getName());
-        } catch (Exception e) {
-            System.out.println("Failed to capture screenshot: " + e.getMessage());
+        // Only quit the driver if the scenario is not related to API tests
+        if (!scenario.getSourceTagNames().contains("@api")) {
+            try {
+                scenario.attach(DriverManager.takeScreenShotAsBytes(), "image/png", scenario.getName());
+            } catch (Exception e) {
+                System.out.println("Failed to capture screenshot: " + e.getMessage());
+            }
+            DriverManager.getDriver().quit();
         }
-       // DriverManager.getDriver().quit();
     }
 }
-

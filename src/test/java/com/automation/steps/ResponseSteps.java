@@ -19,7 +19,6 @@ public class ResponseSteps {
     @And("verify response body has a field {string}")
     public void verifyResponseBodyHasAField(String fieldName) {
         Assert.assertTrue(RestAssuredManager.isFieldAvailable(fieldName));
-
     }
 
     @And("store {string} from response to {string}")

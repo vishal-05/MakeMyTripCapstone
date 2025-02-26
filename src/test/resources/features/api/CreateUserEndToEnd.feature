@@ -1,4 +1,4 @@
-@api
+
 Feature: Validate Create User Endpoints
 
   Scenario: User performs end to end testing

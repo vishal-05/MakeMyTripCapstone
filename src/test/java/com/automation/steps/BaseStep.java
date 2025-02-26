@@ -3,6 +3,7 @@ package com.automation.steps;
 import com.automation.pages.android.*;
 import com.automation.pages.ui.*;
 import com.automation.pages.web.*;
+import com.automation.utils.ConfigReader;
 
 public class BaseStep {
 
@@ -14,9 +15,10 @@ public class BaseStep {
     CabPage cabPage;
     CurrencyPage currencyPage;
     TravelInsurancePage travelInsurancePage;
+
     public BaseStep() {
         if (System.getProperty("platform").equals("web")) {
-             homePage = new WebHomePage();
+            homePage = new WebHomePage();
             loginPage = new WebLoginPage();
             flightPage = new WebFlightPage();
             hotelPage = new WebHotelPage();
