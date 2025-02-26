@@ -30,4 +30,5 @@ Feature: Validate User Can Create Pet
     Given user wants to call "/pet/@pet.id" end point
     When user performs get call
     Then verify status code is 404
+    And verify response body has a field "message"
 

@@ -5,6 +5,7 @@ import com.automation.utils.ConfigReader;
 import com.automation.utils.RestAssuredManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.junit.Assert;
 
@@ -26,5 +27,12 @@ public class ResponseSteps {
         String value = RestAssuredManager.getResponseFieldValue(jsonPath);
         ConfigReader.setConfigValue(configKey, value);
 
+    }
+
+    @And("the response should match the JSON schema {string}")
+    public void theResponseShouldMatchTheJSONSchema(String fileName) {
+        Response response1 = RestAssuredManager.getResponse();
+        response1.then().assertThat().
+                body(JsonSchemaValidator.matchesJsonSchemaInClasspath("jsonData/"+fileName));
     }
 }

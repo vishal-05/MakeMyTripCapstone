@@ -1,7 +1,7 @@
 @api
-Feature: Validate User can be created and then Login and Logout
+Feature: Validate that the user can be created, then log in and log out
 
-  Scenario: Login Logout Api functionality
+  Scenario: Login and Logout Api functionality
     Given user wants to call "/user" end point
     And set header "Content-Type" to "application/json"
     And set request body from file "createUser.json" with type "CreateUser"
@@ -19,7 +19,9 @@ Feature: Validate User can be created and then Login and Logout
     And set request body from file "loginUser.json" with type "LoginUser"
     When user performs get call
     Then verify status code is 200
+    And verify response body has a field "message"
 
     Given user wants to call "/user/logout" end point
     When user performs get call
     Then verify status code is 200
+    And verify response body has a field "message"

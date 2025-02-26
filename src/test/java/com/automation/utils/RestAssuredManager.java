@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import lombok.Getter;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,6 +16,7 @@ import java.util.Scanner;
 public class RestAssuredManager {
 
     static RequestSpecification requestSpecification = RestAssured.given();
+    @Getter
     static Response response;
     static String endPoint;
 
@@ -84,7 +86,7 @@ public class RestAssuredManager {
     public static boolean isFieldAvailable(String fieldName) {
         try{
             String value = RestAssuredManager.getResponseFieldValue(fieldName);
-            System.out.println(value);
+            System.out.println("message: "+value);
             return value!=null && !value.isEmpty();
         } catch (Exception e) {
             return false;

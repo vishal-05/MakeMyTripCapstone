@@ -31,6 +31,7 @@ public class Hooks {
         } catch (Exception e) {
             System.out.println("Failed to capture screenshot: " + e.getMessage());
         }
-        DriverManager.getDriver().quit();
+       // DriverManager.getDriver().quit();
     }
 }
+
