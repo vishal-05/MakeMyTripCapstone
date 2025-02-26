@@ -11,7 +11,6 @@ public class ConfigReader {
     public static void initConfig() {
         props = new Properties();
         try {
-            String env = System.getProperty("env", "dev");
             props.load(new FileInputStream("src/test/resources/config/config.properties"));
         } catch (IOException e) {
             throw new RuntimeException(e);

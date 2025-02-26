@@ -1,4 +1,4 @@
-@api
+
 Feature: Validate that the user can be created, then log in and log out
 
   Scenario: Login and Logout Api functionality

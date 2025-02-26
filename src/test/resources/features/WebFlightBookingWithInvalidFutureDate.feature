@@ -1,5 +1,5 @@
 
-@web
+
 Feature: Validate user can book a flight with future date
 
   Background:

@@ -1,5 +1,5 @@
-@web
-Feature: Validate login and logout functionality
+
+Feature: Validate login functionality
 
   Scenario: verify user can login and logout
     Given user open application
