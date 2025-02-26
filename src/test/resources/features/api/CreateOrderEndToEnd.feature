@@ -16,6 +16,7 @@ Feature: Validate User Can Create Order
     Given user wants to call "/store/order/@order.id" end point
     When user performs get call
     Then verify status code is 200
+    And the response should match the JSON schema "createOrder_Schema.json"
 
     Given user wants to call "/store/order/@order.id" end point
     When user performs delete call
@@ -25,4 +26,5 @@ Feature: Validate User Can Create Order
     Given user wants to call "/store/order/@order.id" end point
     When user performs get call
     Then verify status code is 404
+    And verify response body has a field "message"
 
