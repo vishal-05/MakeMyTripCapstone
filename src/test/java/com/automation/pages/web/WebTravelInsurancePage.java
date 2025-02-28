@@ -73,6 +73,7 @@ public class WebTravelInsurancePage extends WebBasePage implements TravelInsuran
     public void selectDestinationCountry(String countryName){
         otherCountryTab.click();
         searchCountryInputField.sendKeys(countryName);
+        pause(2000);
         for (WebElement countryElement : listOfCountries){
             System.out.println(countryElement.getText());
             if(countryElement.getText().contains(countryName)){

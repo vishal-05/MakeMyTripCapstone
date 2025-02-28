@@ -175,9 +175,6 @@ public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
         System.out.println("image displayed");
     }
 
-
-
-
     public void zoomImage(){
         zoom();
         System.out.println("zoomed in");

@@ -1,4 +1,4 @@
-
+@api
 Feature: Validate User Can Create Pet
 
   Scenario: User performs end to end testing
