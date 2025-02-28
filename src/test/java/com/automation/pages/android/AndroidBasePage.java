@@ -163,7 +163,6 @@ public class AndroidBasePage {
         int startX2 = 2 * width / 3;
         int startY2 = height / 2;
 
-        // For zooming out, bring fingers closer together (move the end points towards each other)
         int endX1 = startX1 + 150;  // move finger 1 to the right
         int endY1 = startY1 + 150;  // move finger 1 down
 

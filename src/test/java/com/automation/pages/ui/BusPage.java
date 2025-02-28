@@ -46,4 +46,5 @@ public interface BusPage {
     default boolean isBusFilterAcNonAcSeaterSleeperDisplayed(String acNonAc, String seaterSleeper){
         return false;
     }
+
 }

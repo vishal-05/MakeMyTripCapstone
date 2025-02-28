@@ -46,10 +46,9 @@ public class WebHomePage extends WebBasePage implements HomePage {
     @FindBy(xpath = "//li[@data-cy='menu_TravelInsurance']")
     WebElement travelInsuranceTab;
 
-
     public boolean verifyHomePageISDisplayed() {
-        //closeBtn.click();
-        System.out.println("home page");
+        pause(5000);
+        closeBtn.click();
         return websiteLogo.isDisplayed();
     }
 

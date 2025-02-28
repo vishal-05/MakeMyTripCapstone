@@ -30,7 +30,7 @@ public class DriverManager {
             options.setExperimentalOption("useAutomationExtension", false);
             driver = new ChromeDriver(options);
             driver.manage().window().maximize();
-        } else if (System.getProperty("platform").equals("mobile")) {
+        } else if (System.getProperty("platform").equals("android")) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("platformName", ConfigReader.getConfigValue("platform.name"));
             capabilities.setCapability("automationName", ConfigReader.getConfigValue("automation.name"));

@@ -13,8 +13,9 @@ public class Hooks {
     @Before("@web or @android")
     public void setUpForWebOrAndroid(Scenario scenario) {
         ConfigReader.initConfig();
-        ExtentReportManager.initReporter(scenario);
         DriverManager.createDriver();
+        ExtentReportManager.initReporter();
+        ExtentReportManager.createTest(scenario.getName());
     }
 
     @Before("@api")
@@ -26,7 +27,6 @@ public class Hooks {
 
     @After
     public void cleanUp(Scenario scenario) {
-        // Only quit the driver if the scenario is not related to API tests
         if (!scenario.getSourceTagNames().contains("@api")) {
             try {
                 scenario.attach(DriverManager.takeScreenShotAsBytes(), "image/png", scenario.getName());
@@ -35,5 +35,6 @@ public class Hooks {
             }
             DriverManager.getDriver().quit();
         }
+        ExtentReportManager.flushReport();
     }
 }

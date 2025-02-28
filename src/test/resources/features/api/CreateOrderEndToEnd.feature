@@ -1,4 +1,4 @@
-
+@api
 Feature: Validate User Can Create Order
 
   Scenario: User performs end to end testing
