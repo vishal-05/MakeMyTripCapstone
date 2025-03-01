@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 @ToString
 @EqualsAndHashCode
 public class CreateOrderPojo {
-    private int id;
-    private int petId;
-    private int quantity;
-    private LocalDateTime shipDate;
-    private String status;
-    private boolean complete;
+    int id;
+    int petId;
+    int quantity;
+    LocalDateTime shipDate;
+    String status;
+    boolean complete;
 }

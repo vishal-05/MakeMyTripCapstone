@@ -12,12 +12,12 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 public class CreatePetPojo {
-    private int id;
-    private Category category;
-    private String name;
-    private List<String> photoUrls;
-    private List<Tag> tags;
-    private String status;
+    int id;
+    Category category;
+    String name;
+    List<String> photoUrls;
+    List<Tag> tags;
+    String status;
 
     // Nested POJOs for category and tags
     @Getter
@@ -25,8 +25,8 @@ public class CreatePetPojo {
     @ToString
     @EqualsAndHashCode
     public static class Category {
-        private int id;
-        private String name;
+        int id;
+        String name;
     }
 
     @Getter
@@ -34,7 +34,7 @@ public class CreatePetPojo {
     @ToString
     @EqualsAndHashCode
     public static class Tag {
-        private int id;
-        private String name;
+        int id;
+        String name;
     }
 }
