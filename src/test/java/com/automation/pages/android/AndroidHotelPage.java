@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"title\" and @text=\"Hotels & Homestays\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='title' and @text='Hotels & Homestays']")
     WebElement hotelSearchText;
 
     @FindBy(xpath = "//android.view.View[@resource-id='location_box']")
@@ -19,67 +19,67 @@ public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
     @FindBy(xpath = "//android.widget.EditText[@resource-id='input_text']")
     WebElement searchText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_month\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/tv_month']")
     WebElement monthName;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/btnDone\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/btnDone']")
     WebElement doneBtn1;
 
-    @FindBy(xpath = "//android.view.View[@resource-id=\"room_and_guest_box\"]")
+    @FindBy(xpath = "//android.view.View[@resource-id='room_and_guest_box']")
     WebElement guestBox;
 
-    @FindBy(xpath = "(//android.view.View[@resource-id=\"dropdown_icon\"])[2]")
+    @FindBy(xpath = "(//android.view.View[@resource-id='dropdown_icon'])[2]")
     WebElement adultOption;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"dropdown_item_text\" and @text=\"02\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='dropdown_item_text' and @text='02']")
     WebElement numOfAdults;
 
-    @FindBy(xpath = "//android.widget.TextView[@text=\"DONE\"]")
+    @FindBy(xpath = "//android.widget.TextView[@text='DONE']")
     WebElement doneBtn2;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"search_cta\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='search_cta']")
     WebElement searchBtn;
 
-    @FindBy(xpath = "//android.view.View[@resource-id=\"mediaCard\"]")
+    @FindBy(xpath = "//android.view.View[@resource-id='mediaCard']")
     List<WebElement> hotelImage;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"tvHotelName\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='tvHotelName']")
     WebElement firstHotelTab;
 
-        @FindBy(xpath = "//android.widget.TextView[@resource-id=\"tv_title\"]")
+        @FindBy(xpath = "//android.widget.TextView[@resource-id='tv_title']")
             WebElement hotelName;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"tvRoomPrice\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='tvRoomPrice']")
     WebElement roomPricePerNight;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"forwardButton\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='forwardButton']")
     WebElement selectRoomTab;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"tv_hotel_name\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='tv_hotel_name']")
     WebElement hotelNameText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"check_in_date\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='check_in_date']")
     WebElement checkInDateText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"check_in\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='check_in']")
     WebElement checkInTimeText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"check_out_date\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='check_out_date']")
     WebElement checkOutDateText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"check_out\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='check_out']")
     WebElement checkOutTimeText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"tv_amount\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='tv_amount']")
     WebElement totalAmt;
 
-        @FindBy(xpath = "(//android.view.View[@resource-id=\"image_grid_item\"])[1]")
+        @FindBy(xpath = "(//android.view.View[@resource-id='image_grid_item'])[1]")
             WebElement hotelImageEle;
 
-            @FindBy(xpath = "//android.view.View[@resource-id=\"gallery_item_12\"]")
+            @FindBy(xpath = "//android.view.View[@resource-id='gallery_item_12']")
                 WebElement firstHotelImg;
 
-                @FindBy(xpath = "(//android.view.View[@resource-id=\"media_grid_list_item_0\"])[1]")
+                @FindBy(xpath = "(//android.view.View[@resource-id='media_grid_list_item_0'])[1]")
                     WebElement firstHotelImg1;
 
     public boolean isUserIsOnHotelPage() {
@@ -106,7 +106,7 @@ public class AndroidHotelPage extends AndroidBasePage implements HotelPage {
             }
         }
 
-        String XPATH_DATE_VALUE = "//f[@content-desc=\"%s 2025 Tap to select\"]";
+        String XPATH_DATE_VALUE = "//f[@content-desc='%s 2025 Tap to select']";
 
         String dateValue = getFormattedDate("dd MMM", checkInDate, "dd/MM/yyyy");
         String datePart = dateValue.substring(0, 2); // Extracts "14"

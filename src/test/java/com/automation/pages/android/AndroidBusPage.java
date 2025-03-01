@@ -9,67 +9,67 @@ import java.util.List;
 
 public class AndroidBusPage extends AndroidBasePage implements BusPage {
 
-    @FindBy(xpath = "//android.view.View[@resource-id=\"landingPage_busSearch\"]")
+    @FindBy(xpath = "//android.view.View[@resource-id='landingPage_busSearch']")
     WebElement busSearchText;
 
-    @FindBy(xpath = "//android.widget.TextView[@text=\"FROM\"]")
+    @FindBy(xpath = "//android.widget.TextView[@text='FROM']")
     WebElement fromCityTab;
 
-    @FindBy(xpath = "//android.widget.EditText[@text=\"Try Searching For \"]")
+    @FindBy(xpath = "//android.widget.EditText[@text='Try Searching For ']")
     WebElement fromCityInput;
 
     @FindBy(xpath = "//android.widget.EditText")
     WebElement toCityInput;
 
-    @FindBy(xpath = "//android.widget.TextView[@text=\"DATE\"]")
+    @FindBy(xpath = "//android.widget.TextView[@text='DATE']")
     WebElement departureDateText;
 
-    @FindBy(xpath = "//android.widget.TextView[@text=\"DONE\"]")
+    @FindBy(xpath = "//android.widget.TextView[@text='DONE']")
     WebElement doneBtn;
 
-    @FindBy(xpath = "//android.widget.TextView[@text=\"SEARCH BUSES\"]")
+    @FindBy(xpath = "//android.widget.TextView[@text='SEARCH BUSES']")
     WebElement searchBusesBtn;
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Okay\"]/android.view.View")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='Okay']/android.view.View")
     WebElement freeCancelBtn;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"idOperatorName\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='idOperatorName']")
     List<WebElement> listOfBuses;
 
     @FindBy(xpath = "(//android.view.ViewGroup[@resource-id='ss_SeatAvailable'])[1]")
     WebElement firstAvailableSeat;
 
-    @FindBy(xpath = "//android.widget.TextView[@text=\"Next\"]")
+    @FindBy(xpath = "//android.widget.TextView[@text='Next']")
     WebElement nextBtn;
 
-    @FindBy(xpath = "//android.widget.TextView[@text=\"Select Pickup & Drop Points\"]")
+    @FindBy(xpath = "//android.widget.TextView[@text='Select Pickup & Drop Points']")
     WebElement pickUpDropText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"bpDp_BoardingPoint\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='bpDp_BoardingPoint']")
     WebElement boardingPoint;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"bpDp_DropPoint\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='bpDp_DropPoint']")
     WebElement dropPoint;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"reviewPage_header_text\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='reviewPage_header_text']")
     WebElement reviewBookingText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"reviewPage_operatorName\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='reviewPage_operatorName']")
     WebElement busNameText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"reviewPage_BoardingPoint_name\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='reviewPage_BoardingPoint_name']")
     WebElement boardingPointNameText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"reviewPage_BoardingPoint_timeStamp\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='reviewPage_BoardingPoint_timeStamp']")
     WebElement boardingPointTimeText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"reviewPage_DropPoint_name\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='reviewPage_DropPoint_name']")
     WebElement dropPointNameText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"reviewPage_DroppingPoint_timeStamp\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='reviewPage_DroppingPoint_timeStamp']")
     WebElement dropPointTimeText;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"reviewPage_SeatPrice\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='reviewPage_SeatPrice']")
     WebElement finalPrice;
 
     public boolean isUserIsOnBusPage(){
@@ -92,17 +92,17 @@ public class AndroidBusPage extends AndroidBasePage implements BusPage {
 
         String expMonth = getFormattedDate("MMMM", departureDate, "dd/MM/yyyy");
         pause(4000);
-        WebElement elementForScroll = driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id=\"com.makemytrip:id/react_fragment_container\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]"));
+        WebElement elementForScroll = driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='com.makemytrip:id/react_fragment_container']/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]"));
         List<WebElement> expMonthElement = driver.findElements(By.xpath("//android.widget.TextView[contains(@text,' 25')]"));
         while (!expMonthElement.getFirst().getText().contains(expMonth)){
-            elementForScroll = driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id=\"com.makemytrip:id/react_fragment_container\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]"));
+            elementForScroll = driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='com.makemytrip:id/react_fragment_container']/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[3]/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]"));
             scrollWithWebElement(elementForScroll);
             pause(1000);
             expMonthElement = driver.findElements(By.xpath("//android.widget.TextView[contains(@text,' 25')]"));
         }
 
         String dateValue = getFormattedDate("dd", departureDate, "dd/MM/yyyy");
-        WebElement dateElement = driver.findElement(By.xpath(String.format("(//android.widget.TextView[@text=\"%s\"])[1]", dateValue)));
+        WebElement dateElement = driver.findElement(By.xpath(String.format("(//android.widget.TextView[@text='%s'])[1]", dateValue)));
         dateElement.click();
 
         doneBtn.click();

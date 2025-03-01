@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class AndroidCabPage extends AndroidBasePage implements CabPage {
-    @FindBy(xpath = "//android.widget.TextView[@text=\"Cab Search\"]")
+    @FindBy(xpath = "//android.widget.TextView[@text='Cab Search']")
     WebElement cabSearchPageTitle;
 
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='ENTER PICK UP ADDRESS']")

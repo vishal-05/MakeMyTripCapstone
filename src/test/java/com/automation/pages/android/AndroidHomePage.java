@@ -6,39 +6,39 @@ import org.openqa.selenium.support.FindBy;
 
 public class AndroidHomePage extends AndroidBasePage implements HomePage {
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_card_text\" and @text=\"Home\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/tv_card_text' and @text='Home']")
     WebElement homeTab;
 
-    @FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Hamburger\"]")
+    @FindBy(xpath = "//android.widget.ImageView[@content-desc='Hamburger']")
     WebElement hamburgerBtn;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_title\" and contains(@text, \"Hi\")]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/tv_title' and contains(@text, 'Hi')]")
     WebElement profileName;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tvTitle\" and @text=\"My Account\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/tvTitle' and @text='My Account']")
     WebElement myAccBtn;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"verItemTitle\" and @text=\"\u200DLogout\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='verItemTitle' and @text='\u200DLogout']")
     WebElement logoutBtn;
 
-    @FindBy(xpath = "(//android.widget.TextView[@text=\"Log Out\"])[2]")
+    @FindBy(xpath = "(//android.widget.TextView[@text='Log Out'])[2]")
     WebElement confirmLogOut;
-    @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_deny_button\"]")
+    @FindBy(xpath = "//android.widget.Button[@resource-id='com.android.permissioncontroller:id/permission_deny_button']")
     WebElement doNotAllow;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tvTitle\" and @text=\"Flights\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/tvTitle' and @text='Flights']")
     WebElement flightsTab;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tvTitle\" and @text=\"Hotels\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/tvTitle' and @text='Hotels']")
     WebElement hotelsTab;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tvTitle\" and @text=\"Trains/ Bus\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/tvTitle' and @text='Trains/ Bus']")
     WebElement trainsAndBusesTab;
 
-    @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Book Bus Tickets\"]")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc='Book Bus Tickets']")
     WebElement busTab;
 
-        @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tvTitle\" and @text=\"Airport Cabs\"]")
+        @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/tvTitle' and @text='Airport Cabs']")
             WebElement cabsTab;
 
     public boolean isProfileNameDisplayed() {

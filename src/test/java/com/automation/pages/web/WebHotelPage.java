@@ -81,7 +81,6 @@ public class WebHotelPage extends WebBasePage implements HotelPage {
             }
         }
         String dateValue = getFormattedDate("dd", checkInDate, "dd/MM/yyyy");
-        System.out.println(dateValue);
         WebElement checkInDateElement = driver.findElement(By.xpath("//div[@class='DayPicker-Day' and contains(text(),'" + dateValue + "')]"));
         checkInDateElement.click();
         dateValue = getFormattedDate("dd", checkoutDate, "dd/MM/yyyy");
@@ -100,7 +99,6 @@ public class WebHotelPage extends WebBasePage implements HotelPage {
     public void clickOnFirstHotel() {
         pause(2000);
         hotelTitles.getFirst().click();
-        System.out.println("Clicked Hotel");
     }
 
     public void printPriceAndSelectRoom() {
@@ -125,6 +123,4 @@ public class WebHotelPage extends WebBasePage implements HotelPage {
         System.out.println("Total Amount Incl Of Taxes & Fees: " + totalAmt.getText());
         System.out.println("***********************************************************");
     }
-
-
 }

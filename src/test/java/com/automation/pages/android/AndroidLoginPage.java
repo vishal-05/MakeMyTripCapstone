@@ -7,28 +7,28 @@ import org.openqa.selenium.support.FindBy;
 
 public class AndroidLoginPage extends AndroidBasePage implements LoginPage {
 
-    @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.makemytrip:id/skipTextView\"]")
+    @FindBy(xpath = "//android.widget.Button[@resource-id='com.makemytrip:id/skipTextView']")
     WebElement skipBtn;
 
-    @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.google.android.gms:id/cancel\"]")
+    @FindBy(xpath = "//android.widget.Button[@resource-id='com.google.android.gms:id/cancel']")
     WebElement noneAbove;
 
-    @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_deny_button\"]")
+    @FindBy(xpath = "//android.widget.Button[@resource-id='com.android.permissioncontroller:id/permission_deny_button']")
     WebElement doNotAllow;
 
-    @FindBy(xpath = "//android.widget.ImageView[@content-desc=\"Go Back\"]")
+    @FindBy(xpath = "//android.widget.ImageView[@content-desc='Go Back']")
     WebElement closeBtn;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.makemytrip:id/tv_header\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='com.makemytrip:id/tv_header']")
     WebElement loginPageTitle;
 
-    @FindBy(xpath = "//android.widget.EditText[@resource-id=\"com.makemytrip:id/inputFieldChild\"]")
+    @FindBy(xpath = "//android.widget.EditText[@resource-id='com.makemytrip:id/inputFieldChild']")
     WebElement phoneNumberInput;
 
-    @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.makemytrip:id/btn_submit\"]")
+    @FindBy(xpath = "//android.widget.Button[@resource-id='com.makemytrip:id/btn_submit']")
     WebElement confirmBtn;
 
-    @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.makemytrip:id/btn_continue\"]")
+    @FindBy(xpath = "//android.widget.Button[@resource-id='com.makemytrip:id/btn_continue']")
     WebElement submitBtn;
 
     public void clickLogin() {

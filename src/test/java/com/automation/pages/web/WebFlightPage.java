@@ -72,15 +72,12 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
     @FindBy(xpath = "//div[@class='adultList ']/label")
     WebElement adult1;
 
-//    @FindBy(xpath = "//div[@class='adultItem']/div[@class='selectTab ']//label")
-//    WebElement genderElement;
 
     public boolean isUserIsOnFlightPage() {
         return flightTabActive.isDisplayed();
     }
 
     public void enterFlightDetails(String fromCity, String toCity) {
-        System.out.println(fromCity);
         fromCityBox.click();
         fromCityInput.sendKeys(fromCity);
         pause(5000);
@@ -100,27 +97,20 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
         String actMonth = monthYearParts[0];  // Extract month
         String actYear = monthYearParts[1];   // Extract year
 
-        // Compare both month and year
         while (!(expMonth.equals(actMonth) && expYear.equals(actYear))) {
-            System.out.println("Current month: " + actMonth + " " + actYear);
-            System.out.println("Expected month: " + expMonth + " " + expYear);
 
-            // Click next button to navigate to the next month
             nextMonthBtn.click();
             pause(1000);
 
-            // Update the current month and year
             actMonthYear = monthName.getText();
             monthYearParts = actMonthYear.split(" ");
             actMonth = monthYearParts[0];
             actYear = monthYearParts[1];
         }
 
-        // Extract the day (date) from the departureDate parameter
         String dateValue = getFormattedDate("dd", departureDate, "dd/MM/yyyy");
         System.out.println("Selecting date: " + dateValue);
 
-        // Select the date on the calendar
         WebElement dateElement = driver.findElement(By.xpath("//div[contains(@aria-label, '" + dateValue + "')]/div[@class='dateInnerCell']/p[contains(text(), '" + dateValue + "')][1]"));
         dateElement.click();
 
@@ -138,7 +128,6 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
 
     public void userClickOnFirstFlight() {
         viewPricesBtn.click();
-        System.out.println("click prices");
         pause(5000);
     }
 
@@ -155,7 +144,6 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
         addAdultBtn.click();
         pause(5000);
         adult1.click();
-        System.out.println("click adult");
         firstNameInput.clear();
         firstNameInput.sendKeys(firstName);
         lastNameInput.sendKeys(lastname);
@@ -166,7 +154,6 @@ public class WebFlightPage extends WebBasePage implements FlightPage {
         pause(5000);
         js.executeScript("arguments[0].click();", noInsurance);
         noInsurance.click();
-        System.out.println("clicked insurance");
         pause(5000);
     }
 

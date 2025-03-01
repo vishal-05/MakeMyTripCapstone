@@ -30,7 +30,6 @@ public class AndroidBasePage {
     public void pause(long milliSec) {
         try {
             Thread.sleep(milliSec);
-            System.out.println("waited");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

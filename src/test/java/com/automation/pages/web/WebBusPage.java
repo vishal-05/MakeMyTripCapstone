@@ -126,7 +126,6 @@ public class WebBusPage extends WebBasePage implements BusPage {
         WebElement dateElement = driver.findElement(By.xpath("//div[@class='DayPicker-Day' and contains(text(), '" + dateValue + "')]"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", dateElement);
-       // dateElement.click();
     }
 
     public void clickSearchBusesBtn() {
@@ -146,9 +145,7 @@ public class WebBusPage extends WebBasePage implements BusPage {
             WebElement firstSleeperSeat = sleeperSeats.getFirst();
             firstSleeperSeat.click();
             System.out.println("Sleeper bed seat selected.");
-        }
-        // If no sleeper seat is available, check for regular seats
-        else if (!regularSeats.isEmpty()) {
+        } else if (!regularSeats.isEmpty()) {
             WebElement firstRegularSeat = regularSeats.getFirst();
             firstRegularSeat.click();
             System.out.println("Regular seat selected.");
